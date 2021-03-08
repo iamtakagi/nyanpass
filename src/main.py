@@ -4,7 +4,6 @@ import MeCab
 import tweepy
 import re
 import random
-import logging
 
 # MeCab
 mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
@@ -69,7 +68,7 @@ def generate():
     # 名詞を格納するリスト
     meisi_list = []
 
-    # 全ての文章から名詞だけを取り出す
+    # 全ての文章から固有名詞だけを取り出す
     for text in data:
         t = text.replace(",", "")
         print(mecab.parse(t))
