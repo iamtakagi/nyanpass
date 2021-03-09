@@ -78,6 +78,9 @@ def generate():
 
 # ツイート
 def tweet():
+    # 「にゃんぱすー」を呟くか決める (確率は1/100)
+    if np.random.randint(1,101) == 1:
+        api.update_status(status = "にゃんぱすー")
     sentence_1, sentence_2 = generate()
     api.update_status(status = sentence_1)
     api.update_status(status = sentence_2)
