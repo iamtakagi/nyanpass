@@ -84,8 +84,8 @@ def generate():
 # ツイート
 @sched.scheduled_job('cron', id='tweet', minute='*/20')
 def tweet():
-    # 「にゃんぱすー」を呟くか決める (確率は1/100)
-    if np.random.randint(1,101) == 1:
+    # 10%の確率で「にゃんぱすー」を呟く
+    if np.random.randint(1,91) == 1:
         api.update_status(status = "にゃんぱすー")
     sentence_1, sentence_2 = generate()
     api.update_status(status = sentence_1)
