@@ -64,8 +64,8 @@ def generate():
     logging.debug(meisi_list)
 
     # ランダムな名詞を選び、語幹 + 名詞 + 語尾 の形で文章を2つ生成する
-    s_1 = random.choice(sets)
-    s_2 = random.choice(sets)
+    s_1 = np.random.choice(sets)
+    s_2 = np.random.choice(sets)
     sentence_1 = s_1["gokan"] + np.random.choice(meisi_list) + s_1["gobi"]
     sentence_2 = s_2["gokan"] + np.random.choice(meisi_list) + s_2["gobi"]
 
