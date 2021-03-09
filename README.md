@@ -1,6 +1,6 @@
 # renchon: 💬 TLから言葉を学習して喋るれんちょんボット from [のんのんびより](https://nonnontv.com/tvanime/)
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/releases)
+[![CI](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.9.2-blue)](https://kotlinlang.org)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/iamtakagi/renchon/CI)](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml)
 [![license](https://img.shields.io/github/license/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/blob/master/LICENSE)
