@@ -8,11 +8,11 @@ RUN rm -rf ./mecab-ipadic-neologd
 RUN ln -s /var/lib/mecab/dic /usr/lib/mecab/dic
 
 ENV MECABRC="/etc/mecabrc"
-ENV SCREEN_NAME=""
-ENV CK=""
-ENV CS=""
-ENV AT=""
-ENV ATS=""
+ENV SCREEN_NAME=$SCREEN_NAME
+ENV CK=$CK
+ENV CS=$CS
+ENV AT=$AT
+ENV ATS=$ATS
 
 WORKDIR /app
 COPY Pipfile .
