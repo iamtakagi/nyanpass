@@ -4,23 +4,30 @@ import MeCab
 import tweepy
 import re
 import numpy as np
-import json 
-
-# MeCab
-mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
+import json
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 # Env
 env = {"SCREEN_NAME": os.environ["SCREEN_NAME"], "CK": os.environ["CK"], "CS": os.environ["CS"], "AT": os.environ["AT"], "ATS": os.environ["ATS"]}
 
+# MeCab
+mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
+
 # Sets
 with open('./assets/sets.json') as json_file: 
-    sets = json.load(json_file) 
+    sets = json.load(json_file)
+
+# Logging
+logging.basicConfig(level=logging.DEBUG)
+
+sched = BlockingScheduler()
+class Config(object):
+    SCHEDULER_API_ENABLED = True
 
 # Tweepy
 auth = tweepy.OAuthHandler(env["CK"], env["CS"])
 auth.set_access_token(env["AT"], env["ATS"])
 api = tweepy.API(auth)
-
 
 # Reply URL フィルター
 def filter(tweets):
@@ -77,6 +84,7 @@ def generate():
     return sentence_1, sentence_2
 
 # ツイート
+@sched.scheduled_job('cron', id='tweet', minute='*/20')
 def tweet():
     # 「にゃんぱすー」を呟くか決める (確率は1/100)
     if np.random.randint(1,101) == 1:
@@ -86,4 +94,4 @@ def tweet():
     api.update_status(status = sentence_2)
     
 if __name__ == "__main__":
-    tweet()
+    sched.start()
