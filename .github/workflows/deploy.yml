@@ -20,3 +20,14 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
+          docker_build_args: |
+            SCREEN_NAME
+            CK
+            AT
+            ATS
+        env:
+          SCREEN_NAME: ${{ secrets.SCREEN_NAME }}
+          CK: ${{ secrets.CK }}
+          CS: ${{ secrets.CS }}
+          AT: ${{ secrets.AT }}
+          ATS: ${{ secrets.ATS }}
