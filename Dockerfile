@@ -8,6 +8,13 @@ RUN rm -rf ./mecab-ipadic-neologd
 RUN ln -s /var/lib/mecab/dic /usr/lib/mecab/dic
 
 ENV MECABRC="/etc/mecabrc"
+
+ARG SCREEN_NAME
+ARG CK
+ARG CS
+ARG AT
+ARG ATS
+
 ENV SCREEN_NAME=$SCREEN_NAME
 ENV CK=$CK
 ENV CS=$CS
