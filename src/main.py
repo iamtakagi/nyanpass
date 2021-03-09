@@ -43,9 +43,7 @@ def filter(tweets):
 # 文章生成
 def generate():
     # ツイート取得
-    texts = []
-    for status in api.home_timeline(count = 100):
-        texts.append(status.text)
+    texts = [s.text for s in api.home_timeline(count = 10) if not s.user.screen_name == env["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
 
     # フィルター
     data = filter(texts)
