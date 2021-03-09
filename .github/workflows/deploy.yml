@@ -23,6 +23,7 @@ jobs:
           docker_build_args: |
             SCREEN_NAME
             CK
+            CS
             AT
             ATS
         env:
