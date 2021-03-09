@@ -14,7 +14,10 @@ mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 # Sets
 with open('./assets/sets.json') as json_file: 
-    sets = json.load(json_file) 
+    sets = json.load(json_file)
+
+# Logging
+logging.basicConfig(level=logging.DEBUG)
 
 # Tweepy
 auth = tweepy.OAuthHandler(env["CK"], env["CS"])
