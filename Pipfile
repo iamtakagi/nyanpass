@@ -12,6 +12,7 @@ pandas = "*"
 requests-oauthlib = "*"
 mecab-python3 = "*"
 tweepy = "*"
+numpy = "*"
 
 [dev-packages]
 flake8 = "*"

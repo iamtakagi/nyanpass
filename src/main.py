@@ -3,7 +3,7 @@ import logging
 import MeCab
 import tweepy
 import re
-import random
+import numpy as np
 import json 
 
 # MeCab
@@ -66,8 +66,8 @@ def generate():
     # ランダムな名詞を選び、語幹 + 名詞 + 語尾 の形で文章を2つ生成する
     s_1 = random.choice(sets)
     s_2 = random.choice(sets)
-    sentence_1 = s_1["gokan"] + random.choice(meisi_list) + s_1["gobi"]
-    sentence_2 = s_2["gokan"] + random.choice(meisi_list) + s_2["gobi"]
+    sentence_1 = s_1["gokan"] + np.random.choice(meisi_list) + s_1["gobi"]
+    sentence_2 = s_2["gokan"] + np.random.choice(meisi_list) + s_2["gobi"]
 
     # 文章を出力
     logging.debug(sentence_1)
