@@ -4,13 +4,13 @@ import MeCab
 import tweepy
 import re
 import numpy as np
-import json 
-
-# MeCab
-mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
+import json
 
 # Env
 env = {"SCREEN_NAME": os.environ["SCREEN_NAME"], "CK": os.environ["CK"], "CS": os.environ["CS"], "AT": os.environ["AT"], "ATS": os.environ["ATS"]}
+
+# MeCab
+mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 # Sets
 with open('./assets/sets.json') as json_file: 
