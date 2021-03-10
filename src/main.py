@@ -82,7 +82,7 @@ def generate():
     return sentence_1, sentence_2
 
 # ツイート
-@sched.scheduled_job('cron', id='tweet', minute='*/20')
+@sched.scheduled_job('cron', id='tweet', minute='*/15')
 def tweet():
     # 10%の確率で「にゃんぱすー」を呟く
     if np.random.randint(1,91) == 1:
