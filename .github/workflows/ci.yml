@@ -6,7 +6,9 @@ on:
       - master
       - dev
     paths-ignore:
-      - '*.md'
+      - .gitignore
+      - LICENSE
+      - '**.md'
       
   pull_request:
      branches:
@@ -16,7 +18,9 @@ on:
       - opened
       - synchronize
      paths-ignore:
-      - '*.md'
+      - .gitignore
+      - LICENSE
+      - '**.md'
 
 jobs:
         
