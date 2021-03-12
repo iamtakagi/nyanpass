@@ -18,6 +18,6 @@ TLからツイートを取得 -> 名詞を取り出す -> テンプレと合わ�
 - Tweepy
 - Mecab
 
-## 貢献
+## Contribution / 貢献
 [![issues](https://img.shields.io/github/issues/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/pulls)
