@@ -19,9 +19,9 @@ env = {
 # MeCab
 mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
-# Sets
-with open('./assets/sets.json', 'r') as json_file: 
-    sets = json.load(json_file)
+# Templates
+with open('./assets/templates.json', 'r') as json_file: 
+    templates = json.load(json_file)
 
 # Filter Words
 with open('./assets/banned_words.json', 'r') as json_file:
@@ -87,8 +87,8 @@ def generate():
     logging.debug(nouns)
 
     # ランダムな名詞を選び、語幹 + 名詞 + 語尾 の形で文章を2つ生成する
-    s_1 = np.random.choice(sets)
-    s_2 = np.random.choice(sets)
+    s_1 = np.random.choice(templates)
+    s_2 = np.random.choice(templates)
     n_1 = filter_words(np.random.choice(nouns))
     n_2 = filter_words(np.random.choice(nouns))
     sentence_1 = s_1["gokan"] + n_1 + s_1["gobi"]
