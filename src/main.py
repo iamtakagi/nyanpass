@@ -17,10 +17,6 @@ mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 with open('./assets/sets.json') as json_file: 
     sets = json.load(json_file)
 
-# Filter Words
-with open('./assets/filter_words.json') as json_file:
-    filter_words = json.load(json_file)
-
 # Logging
 logging.basicConfig(level=logging.DEBUG)
 
@@ -34,7 +30,7 @@ auth.set_access_token(env["AT"], env["ATS"])
 api = tweepy.API(auth)
 
 # Reply URL フィルター
-def filter_links(tweets):
+def filter(tweets):
     replyMatch = re.compile(r"@\w+")
     urlMatch = re.compile(r"https?://")
     data = []
@@ -44,18 +40,13 @@ def filter_links(tweets):
         data.append(text)
     return data
 
-def remove_filter_words(noun):
-    for w in filter_words:
-        noun = noun.replace(w, '')
-    return noun
-
 # 文章生成
 def generate():
     # ツイート取得
     texts = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == env["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
 
     # フィルター
-    data = filterLinks(texts)
+    data = filter(texts)
 
     for t in data:
         t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
@@ -64,7 +55,7 @@ def generate():
     logging.debug(data)
    
     # 名詞を格納するリスト
-    nouns_list = []
+    meisi_list = []
 
     # 全ての文章から固有名詞だけを取り出す
     for text in data:
@@ -72,18 +63,16 @@ def generate():
         logging.debug(mecab.parse(t))
         nouns = [line for line in mecab.parse(t).splitlines() if "固有名詞" in line.split()[-1]]
         for n in nouns:
-            nouns_list.append(n.split("\t")[0])
+            meisi_list.append(n.split("\t")[0])
 
     # 名詞リストを出力
-    logging.debug(nouns_list)
+    logging.debug(meisi_list)
 
     # ランダムな名詞を選び、語幹 + 名詞 + 語尾 の形で文章を2つ生成する
     s_1 = np.random.choice(sets)
     s_2 = np.random.choice(sets)
-    n_1 = filter_words(np.random.choice(nouns_list))
-    n_2 = filter_words(np.random.choice(nouns_list))
-    sentence_1 = s_1["gokan"] + n_1 + s_1["gobi"]
-    sentence_2 = s_2["gokan"] + n_2 + s_2["gobi"]
+    sentence_1 = s_1["gokan"] + np.random.choice(meisi_list) + s_1["gobi"]
+    sentence_2 = s_2["gokan"] + np.random.choice(meisi_list) + s_2["gobi"]
 
     # 文章を出力
     logging.debug(sentence_1)
