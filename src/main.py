@@ -55,24 +55,32 @@ def generate():
     logging.debug(data)
    
     # 名詞を格納するリスト
-    meisi_list = []
+    nouns = []
 
     # 全ての文章から固有名詞だけを取り出す
     for text in data:
         t = text.replace(",", "")
+
+        # 形態素出力
         logging.debug(mecab.parse(t))
-        nouns = [line for line in mecab.parse(t).splitlines() if "固有名詞" in line.split()[-1]]
-        for n in nouns:
-            meisi_list.append(n.split("\t")[0])
+
+        # 名詞を格納
+        for n in [line for line in mecab.parse(t).splitlines() if "固有名詞" in line.split()[-1]]:
+
+            noun = n.split("\t")[0]
+
+            # 重複チェック
+            if not noun in nouns:
+                nouns.append(noun)
 
     # 名詞リストを出力
-    logging.debug(meisi_list)
+    logging.debug(nouns)
 
     # ランダムな名詞を選び、語幹 + 名詞 + 語尾 の形で文章を2つ生成する
     s_1 = np.random.choice(sets)
     s_2 = np.random.choice(sets)
-    sentence_1 = s_1["gokan"] + np.random.choice(meisi_list) + s_1["gobi"]
-    sentence_2 = s_2["gokan"] + np.random.choice(meisi_list) + s_2["gobi"]
+    sentence_1 = s_1["gokan"] + np.random.choice(nouns) + s_1["gobi"]
+    sentence_2 = s_2["gokan"] + np.random.choice(nouns) + s_2["gobi"]
 
     # 文章を出力
     logging.debug(sentence_1)
