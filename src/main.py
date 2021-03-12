@@ -55,7 +55,7 @@ def generate():
     texts = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == env["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
 
     # フィルター
-    data = filter_links(texts)
+    data = filterLinks(texts)
 
     for t in data:
         t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
