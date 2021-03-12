@@ -12,3 +12,14 @@
 <img src="https://i.imgur.com/7FlRUm8.jpg" width="512">
 
 <div>
+
+## 仕組み
+TLからツイートを取得 -> 名詞を取り出す -> テンプレと合わせる
+
+## 主な依存関係
+- Tweepy
+- Mecab
+
+## 貢献
+[![issues](https://img.shields.io/github/issues/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/pulls)
