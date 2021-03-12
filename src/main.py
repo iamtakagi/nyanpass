@@ -20,12 +20,12 @@ env = {
 mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 # Sets
-with open('./assets/sets.json') as json_file: 
+with open('./assets/sets.json', 'r') as json_file: 
     sets = json.load(json_file)
 
 # Filter Words
-with open('./assets/filter_words.json') as json_file:
-    filter_words = json.load(json_file)
+with open('./assets/filter_words.json', 'r') as json_file:
+    filter_words = json.load(json_file)["words"]
 
 # Logging
 logging.basicConfig(level=logging.DEBUG)
