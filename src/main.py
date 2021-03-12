@@ -25,7 +25,7 @@ with open('./assets/sets.json') as json_file:
 
 # Filter Words
 with open('./assets/filter_words.json') as json_file:
-    filter_words = json.load(json_file)[0]
+    filter_words = json.load(json_file)
 
 # Logging
 logging.basicConfig(level=logging.DEBUG)
