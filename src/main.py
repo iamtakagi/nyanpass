@@ -24,8 +24,8 @@ with open('./assets/sets.json', 'r') as json_file:
     sets = json.load(json_file)
 
 # Filter Words
-with open('./assets/filter_words.json', 'r') as json_file:
-    filter_words = json.load(json_file)["words"]
+with open('./assets/banned_words.json', 'r') as json_file:
+    banned_words = json.load(json_file)
 
 # Logging
 logging.basicConfig(level=logging.DEBUG)
@@ -51,7 +51,7 @@ def filter_links(tweets):
     return data
 
 def filter_words(word):
-    for w in filter_words:
+    for w in banned_words:
         word = word.replace(w, '')
     return word
 
