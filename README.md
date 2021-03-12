@@ -8,15 +8,13 @@
 [![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/pulls)
 
 <div align="center">
-
 <img src="https://i.imgur.com/7FlRUm8.jpg" width="512">
+</div>
 
-<div>
-
-## 仕組み
+## Logic / 仕組み
 TLからツイートを取得 -> 名詞を取り出す -> テンプレと合わせる
 
-## 主な依存関係
+## Main dependencies / 主な依存関係
 - Tweepy
 - Mecab
 
