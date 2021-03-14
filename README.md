@@ -8,7 +8,7 @@
 [![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/pulls)
 
 <div align="center">
-<img src="https://i.imgur.com/7FlRUm8.jpg" width="512">
+<img src="https://user-images.githubusercontent.com/46530214/111081508-064fd700-8547-11eb-8141-a80982098dbc.jpg" width="512">
 </div>
 
 ## Logic / 仕組み
