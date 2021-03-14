@@ -1,4 +1,4 @@
-# renchon: 💬 TLから言葉を学習して喋るれんちょんボット from [のんのんびより](https://nonnontv.com/tvanime/)
+# renchon: 💬 TLから単語を学習して喋るれんちょんボット from [のんのんびより](https://nonnontv.com/tvanime/)
 
 [![Python](https://img.shields.io/badge/Python-3.9.2-blue)](https://kotlinlang.org)
 [![CI](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml)
