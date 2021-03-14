@@ -14,7 +14,7 @@
 ## Logic / 仕組み
 TLからツイートを取得 -> 名詞を取り出す -> テンプレと合わせる
 
-## Main dependencies / 主な依存関係
+## Reference / リファレンス
 - Tweepy
 - Mecab
 
