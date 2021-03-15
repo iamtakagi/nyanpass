@@ -115,7 +115,11 @@ def tweet():
 @sched.scheduled_job('cron', id='follow_back', hour='*/1')
 def follow_back():
     for follower in tweepy.Cursor(api.followers).items():
-        if not follower.following and not follower.follow_request_sent:
+        if follower.protected and not follower.follow_request_sent:
+            logging.debug(f"Sending following request to {follower.name}")
+            follower.follow()
+            continue
+        if not follower.following:
             logging.debug(f"Following {follower.name}")
             follower.follow()
 
