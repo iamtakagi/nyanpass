@@ -110,17 +110,6 @@ def tweet():
     sentence_1, sentence_2 = generate()
     api.update_status(status = sentence_1)
     api.update_status(status = sentence_2)
-
-# フォロバ
-@sched.scheduled_job('cron', id='follow_back', hour='*/1')
-def follow_back():
-    for follower in tweepy.Cursor(api.followers).items():
-        if not follower.following:
-            logging.debug(f"Following {follower.name}")
-            follower.follow()
-
+    
 if __name__ == "__main__":
-    # 起動時にフォロバ
-    follow_back()
-    # スケジューラ起動
     sched.start()
