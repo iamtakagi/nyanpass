@@ -118,9 +118,6 @@ def follow_back():
         if not follower.following and not follower.follow_request_sent:
             logging.debug(f"Following {follower.name}")
             follower.follow()
-
+            
 if __name__ == "__main__":
-    # 起動時にフォロバ
-    follow_back()
-    # スケジューラ起動
     sched.start()
