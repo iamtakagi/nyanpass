@@ -21,5 +21,9 @@ TLからツイートを取得 -> 固有名詞を抽出 -> テンプレと組み�
 - Mecab
 
 ## 貢献
-[![issues](https://img.shields.io/github/issues/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/issues)
-[![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/pulls)
+
+### Issues
+バグの報告・改善点・提案等を行ってください。
+
+### Pull Requests
+開発には VSCode を使用しています。
