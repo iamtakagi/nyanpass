@@ -9,8 +9,8 @@
 [![issues](https://img.shields.io/github/issues/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/pulls)
 
-🐦 Working on [Twitter](https://twitter.com/nyanpassnanon)
-🐋 Running on Docker.
+🐦 Working on [Twitter](https://twitter.com/nyanpassnanon)\
+🐋 Running on Docker.\
 📦 Deploying to Heroku.
 
 ## これは何
