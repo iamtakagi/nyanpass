@@ -20,7 +20,7 @@ env = {
 mecab = MeCab.Tagger("-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 # Templates
-with open('./assets/templates.json', 'r') as json_file: 
+with open('./assets/templates.json', 'r') as json_file:
     templates = json.load(json_file)
 
 # Filter Words
@@ -67,7 +67,7 @@ def generate():
 
     # ツイートリストを出力
     logging.debug(data)
-   
+
     # 名詞を格納するリスト
     nouns = []
 
@@ -110,6 +110,6 @@ def tweet():
     sentence_1, sentence_2 = generate()
     api.update_status(status = sentence_1)
     api.update_status(status = sentence_2)
-    
+
 if __name__ == "__main__":
     sched.start()
