@@ -11,7 +11,7 @@
 
 📦 Deploying to Heroku.
 🐳 Running on Docker.\
-🐦 Working on [Twitter](https://twitter.com/nyanpassnanon)\
+🐦 Working on [Twitter](https://twitter.com/nyanpassnanon)
 
 TLからツイートを取得 -> 固有名詞を抽出 -> テンプレと組み合わせる などしてのんのんびよりのキャラクター「宮内れんげ（通称れんげ・6歳）」の台詞風に呟くbotです\
 Get tweets from TL-> Extract proper nouns-> It is a bot that mutters in the dialogue style of the character "Renge Miyauchi (commonly known as Renge, 6 years old)" from Non Non Biyori by combining it with a template.
