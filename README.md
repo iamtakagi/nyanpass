@@ -1,6 +1,7 @@
 ![Capture_20210315-015822](https://user-images.githubusercontent.com/46530214/111081605-6a729b00-8547-11eb-8b1b-ca1b786dc337.jpg)
 
-# renchon: 💬 Learn words Renchon bot from [Non Non Biyori](https://nonnontv.com/tvanime/).
+# renchon
+💬 Learn words Renchon bot from [Non Non Biyori](https://nonnontv.com/tvanime/).
 
 [![Python](https://img.shields.io/badge/Python-3.9.2-blue)](https://kotlinlang.org)
 [![CI](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml)
