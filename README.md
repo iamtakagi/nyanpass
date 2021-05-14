@@ -10,7 +10,7 @@
 [![issues](https://img.shields.io/github/issues/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/pulls)
 
-📦 Deploying to Heroku.\
+📦 Deployed to Heroku.\
 🐳 Running on Docker.\
 🐦 Working on [Twitter](https://twitter.com/nyanpassnanon)
 
