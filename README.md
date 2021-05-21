@@ -1,5 +1,5 @@
 # renchon
-💬 Learn words Renchon bot from [Non Non Biyori](https://nonnontv.com/tvanime/).
+💬 単語を覚えるれんちょんbot
 
 [![Python](https://img.shields.io/badge/Python-3.9.2-blue)](https://kotlinlang.org)
 [![CI](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml)
