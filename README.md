@@ -1,5 +1,3 @@
-![Capture_20210315-015822](https://user-images.githubusercontent.com/46530214/111081605-6a729b00-8547-11eb-8b1b-ca1b786dc337.jpg)
-
 # renchon
 💬 Learn words Renchon bot from [Non Non Biyori](https://nonnontv.com/tvanime/).
 
@@ -14,5 +12,6 @@
 🐳 Running on Docker.\
 🐦 Working on [Twitter](https://twitter.com/nyanpassnanon)
 
-TLからツイートを取得 -> 固有名詞を抽出 -> テンプレと組み合わせる などしてのんのんびよりのキャラクター「宮内れんげ（通称れんげ・6歳）」の台詞風に呟くbotです\
-Get tweets from TL-> Extract proper nouns-> It is a bot that mutters in the dialogue style of the character "Renge Miyauchi (commonly known as Renge, 6 years old)" from Non Non Biyori by combining it with a template.
+# LICENSE
+iamtakagi/rebchon is provided under the MIT license.
+
