@@ -14,5 +14,5 @@
 🐦 Working on [Twitter](https://twitter.com/nyanpassnanon)
 
 # LICENSE
-iamtakagi/rebchon is provided under the MIT license.
+iamtakagi/renchon is provided under the MIT license.
 
