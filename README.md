@@ -6,7 +6,7 @@
 [![issues](https://img.shields.io/github/issues/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/pulls)
 
-[![CI](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml)
+[![Lint](https://github.com/iamtakagi/renchon/actions/workflows/lint.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml)
 [![Deploy](https://github.com/iamtakagi/renchon/actions/workflows/deploy.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/deploy.yml)
 
 📦 Deployed to Heroku.\
