@@ -5,7 +5,7 @@ name = "pypi"
 
 [scripts]
 lint = "flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics"
-start = "python src/generator.py"
+start = "python src/main.py"
 
 [packages]
 pandas = "*"
