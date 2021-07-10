@@ -14,6 +14,8 @@ mecab-python3 = "*"
 tweepy = "*"
 numpy = "*"
 apscheduler = "*"
+flask = "*"
+flask-cors = "*"
 
 [dev-packages]
 flake8 = "*"

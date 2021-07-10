@@ -9,6 +9,11 @@ on:
       - LICENSE
       - '**.md'
 
+env:
+  HOST: 0.0.0.0
+  PORT: 80
+  TZ: Asia/Tokyo
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,14 +27,20 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
-          docker_heroku_process_type: worker
+          docker_heroku_process_type: web
           docker_build_args: |
+            HOST
+            PORT
+            TZ
             SCREEN_NAME
             CK
             CS
             AT
             ATS
         env:
+         HOST: ${{ env.HOST }}
+          PORT: ${{ env.PORT }}
+          TZ: ${{ env.TZ }}
           SCREEN_NAME: ${{ secrets.SCREEN_NAME }}
           CK: ${{ secrets.CK }}
           CS: ${{ secrets.CS }}

@@ -6,6 +6,14 @@ import re
 import numpy as np
 import json
 from apscheduler.schedulers.blocking import BlockingScheduler
+from flask import Flask, jsonify, request
+
+# Flask
+app = Flask(__name__)
+
+# CORS
+from flask_cors import CORS
+CORS(app)
 
 # Env
 env = {
@@ -39,6 +47,12 @@ auth = tweepy.OAuthHandler(env["CK"], env["CS"])
 auth.set_access_token(env["AT"], env["ATS"])
 api = tweepy.API(auth)
 
+# 生成された画像(Base64)を返します
+@app.route("/api/sentence")
+def sentence():
+    sentence_1, sentence_2 = make_sentence()
+    return jsonify({'sentence': sentence_1})
+
 # Reply URL フィルター
 def filter_links(tweets):
     replyMatch = re.compile(r"@\w+")
@@ -56,7 +70,7 @@ def filter_words(word):
     return word
 
 # 文章生成
-def generate():
+def make_sentence():
     # ツイート取得
     texts = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == env["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
 
@@ -107,9 +121,15 @@ def tweet():
     # 10%の確率で「にゃんぱすー」を呟く
     if np.random.randint(1,91) == 1:
         api.update_status(status = "にゃんぱすー")
-    sentence_1, sentence_2 = generate()
+    sentence_1, sentence_2 = make_sentence()
     api.update_status(status = sentence_1)
     api.update_status(status = sentence_2)
 
 if __name__ == "__main__":
+    app.run (
+          threaded=True,
+          host = env["HOST"], 
+          port = env["PORT"], 
+          debug = True
+    )
     sched.start()
