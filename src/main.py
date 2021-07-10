@@ -133,9 +133,10 @@ def tweet():
     api.update_status(status = sentence_1)
     api.update_status(status = sentence_2)
 
+sched.start()
+
 if __name__ == "__main__":
     export()
-    sched.start()
     app.run (
           threaded=True,
           host = env["HOST"], 
