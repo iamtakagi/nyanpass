@@ -29,6 +29,7 @@ ENV ATS=$ATS
 
 WORKDIR /app
 COPY Pipfile .
+RUN pipenv lock
 COPY Pipfile.lock .
 RUN pip install pipenv && \
     pipenv install --system
