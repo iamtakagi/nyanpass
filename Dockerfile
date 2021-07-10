@@ -29,10 +29,9 @@ ENV ATS=$ATS
 
 WORKDIR /app
 COPY Pipfile .
-RUN pip install pipenv && \
-    pipenv lock
 COPY Pipfile.lock .
-RUN pipenv install --system
+RUN pip install pipenv && \
+    pipenv install --system
 COPY . .
 
 ENTRYPOINT ["python3"]
