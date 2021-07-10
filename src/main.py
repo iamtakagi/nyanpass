@@ -135,10 +135,10 @@ def tweet():
 
 if __name__ == "__main__":
     export()
+    sched.start()
     app.run (
           threaded=True,
           host = env["HOST"], 
           port = env["PORT"], 
           debug = True
     )
-    sched.start()
