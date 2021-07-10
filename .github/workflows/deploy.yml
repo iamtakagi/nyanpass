@@ -38,7 +38,7 @@ jobs:
             AT
             ATS
         env:
-         HOST: ${{ env.HOST }}
+          HOST: ${{ env.HOST }}
           PORT: ${{ env.PORT }}
           TZ: ${{ env.TZ }}
           SCREEN_NAME: ${{ secrets.SCREEN_NAME }}
