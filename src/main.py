@@ -17,6 +17,9 @@ CORS(app)
 
 # Env
 env = {
+    "HOST": os.environ["HOST"],
+    "PORT": os.environ["PORT"],
+    "TZ": os.environ["TZ"],
     "SCREEN_NAME": os.environ["SCREEN_NAME"],
     "CK": os.environ["CK"],
     "CS": os.environ["CS"],
