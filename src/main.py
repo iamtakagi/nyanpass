@@ -51,7 +51,7 @@ api = tweepy.API(auth)
 @app.route("/api/sentence")
 def sentence():
     sentence_1, sentence_2 = make_sentence()
-    return jsonify({'sentence': sentence_1})
+    return jsonify({'sentence_1': sentence_1, 'sentence_2': sentence_2})
 
 # Reply URL フィルター
 def filter_links(tweets):
