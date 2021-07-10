@@ -47,7 +47,6 @@ auth = tweepy.OAuthHandler(env["CK"], env["CS"])
 auth.set_access_token(env["AT"], env["ATS"])
 api = tweepy.API(auth)
 
-# 生成された画像(Base64)を返します
 @app.route("/api/sentence")
 def sentence():
     sentence_1, sentence_2 = make_sentence()
