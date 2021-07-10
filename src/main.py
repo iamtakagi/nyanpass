@@ -79,12 +79,12 @@ def export():
         t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
 
     with open("tweets.json", "w") as f:
-        f.write(tweets)
+        f.write(json.dumps(tweets))
 
 # 文章生成
 def make_sentence():
     with open("tweets.json", "r") as f:
-        tweets = f.read()
+        tweets = json.load(f)
 
     # ツイートリストを出力
     logging.debug(tweets)
