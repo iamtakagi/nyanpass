@@ -71,25 +71,29 @@ def filter_words(word):
         word = word.replace(w, '')
     return word
 
-# 文章生成
-def make_sentence():
-    # ツイート取得
-    texts = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == env["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
+def export():
+    tweets = filter_links([s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == env["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text])
 
-    # フィルター
-    data = filter_links(texts)
-    for t in data:
+    for t in tweets:
         t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
 
+    with open("tweets.json", "w") as f:
+        f.write(tweets)
+
+# 文章生成
+def make_sentence():
+    with open("tweets.json", "r") as f:
+        tweets = f.read()
+
     # ツイートリストを出力
-    logging.debug(data)
+    logging.debug(tweets)
 
     # 名詞を格納するリスト
     nouns = []
 
     # 全ての文章から固有名詞だけを取り出す
-    for text in data:
-        t = text.replace(",", "")
+    for tweet in tweets:
+        t = tweet.replace(",", "")
         # 形態素出力
         logging.debug(mecab.parse(t))
         # 名詞を格納
@@ -120,6 +124,7 @@ def make_sentence():
 # ツイート
 @sched.scheduled_job('cron', id='tweet', minute='*/15')
 def tweet():
+    export()
     # 10%の確率で「にゃんぱすー」を呟く
     if np.random.randint(1,91) == 1:
         api.update_status(status = "にゃんぱすー")
@@ -128,6 +133,7 @@ def tweet():
     api.update_status(status = sentence_2)
 
 if __name__ == "__main__":
+    export()
     app.run (
           threaded=True,
           host = env["HOST"], 
