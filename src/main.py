@@ -7,7 +7,7 @@ import json
 from apscheduler.schedulers.blocking import BlockingScheduler
 from flask import Flask, jsonify, request
 
-from makeSentence import make_sentence
+from makeSentences import make_sentences
 
 # Flask
 app = Flask(__name__)
@@ -21,7 +21,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 @app.route("/api/sentence")
 def sentence():
-    sentence_1, sentence_2 = make_sentence()
+    sentence_1, sentence_2 = make_sentences()
     return jsonify({'sentence_1': sentence_1, 'sentence_2': sentence_2})
 
 if __name__ == "__main__":

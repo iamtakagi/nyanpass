@@ -35,7 +35,7 @@ jobs:
         with:
           python-version: 3.9.6
           
-      - name: Install Pip && Depends
+      - name: Install Pip & Install Depends
         run: |
           python -m pip install --upgrade pip
           pip install --no-cache-dir

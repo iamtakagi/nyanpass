@@ -15,7 +15,7 @@ with open("tweets.json", "r") as json_file:
 with open('./assets/templates.json', 'r') as json_file:
     templates = json.load(json_file)
 
-def make_sentence():
+def make_sentences():
 
     # ツイートリストを出力
     logging.debug(tweets)

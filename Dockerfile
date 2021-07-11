@@ -69,8 +69,5 @@ COPY . /app/
 # Add script to crontab
 RUN echo '*/15 * * * * cd /app; python tweet.py' > /var/spool/cron/crontabs/root
 
-# Run flask
-CMD ["python", "src/main.py"]
-
-# Run crond
-ENTRYPOINT ["crond", "-f"]
+# Run flask & Run crond
+CMD ["python", "src/main.py" && "crond", "-f"]
