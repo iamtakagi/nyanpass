@@ -1,6 +1,6 @@
 from makeSentences import make_sentences
 import numpy as np
-from api import api 
+from twitterApi import api 
 from exportTweets import exportTweets
 
 exportTweets()

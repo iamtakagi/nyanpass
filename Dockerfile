@@ -53,8 +53,6 @@ ARG TWITTER_AT
 ARG TWITTER_ATS
 
 ENV MECAB_DICTIONARY_PATH=/usr/local/lib/mecab/dic/mecab-ipadic-neologd
-ENV HOST=${HOST}
-ENV PORT=${PORT}
 ENV TZ=${TZ}
 ENV SCREEN_NAME=${SCREEN_NAME}
 ENV TWITTER_CK=${TWITTER_CK}
@@ -62,13 +60,11 @@ ENV TWITTER_CS=${TWITTER_CS}
 ENV TWITTER_AT=${TWITTER_AT}
 ENV TWITTER_ATS=${TWITTER_ATS}
 
-COPY src/exportTweets.py /app/
-RUN ["python", "exportTweets.py"]
-
 COPY . /app/
 
-# Add script to crontab
-RUN echo '*/15 * * * * cd /app; python tweet.py' > /var/spool/cron/crontabs/root
+RUN ["python", "src/exportTweets.py"]
 
-# Run flask & Run crond
-CMD ["python", "src/main.py" && "crond", "-f"]
+# Add script to crontab
+RUN echo '*/15 * * * * cd /app; python src/tweet.py' > /var/spool/cron/crontabs/root
+
+ENTRYPOINT ["crond", "-f"]

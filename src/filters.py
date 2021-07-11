@@ -1,7 +1,7 @@
 import re
 import json
 
-with open('./assets/banned_words.json', 'r') as json_file:
+with open('assets/banned_words.json', 'r') as json_file:
     banned_words = json.load(json_file)
 
 def filter_links(tweets):

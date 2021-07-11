@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: renchon
+    build:
+      context: .
+      args:
+        TZ: Asia/Tokyo
+        SCREEN_NAME: nyanpassnanon
+        TWITTER_CK: xxx
+        TWITTER_CS: xxx
+        TWITTER_AT: xxx
+        TWITTER_ATS: xxx
+    restart: always

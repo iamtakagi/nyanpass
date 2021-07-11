@@ -7,12 +7,12 @@ import os
 
 # MeCab
 dict_path = os.getenv("MECAB_DICTIONARY_PATH", "/usr/lib64/mecab/dic/mecab-ipadic-neologd")
-mecab = MeCab.Tagger(f"-d {dict_path} -Owakati")
+mecab = MeCab.Tagger(f"-d {dict_path} -Ochasen")
 
 with open("tweets.json", "r") as json_file:
     tweets = json.load(json_file)
 
-with open('./assets/templates.json', 'r') as json_file:
+with open('assets/templates.json', 'r') as json_file:
     templates = json.load(json_file)
 
 def make_sentences():

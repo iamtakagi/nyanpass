@@ -10,8 +10,6 @@ on:
       - '**.md'
 
 env:
-  HOST: 0.0.0.0
-  PORT: 80
   TZ: Asia/Tokyo
 
 jobs:
@@ -29,8 +27,6 @@ jobs:
           usedocker: true
           docker_heroku_process_type: web
           docker_build_args: |
-            HOST
-            PORT
             TZ
             SCREEN_NAME
             TWITTER_CK
@@ -38,8 +34,6 @@ jobs:
             TWITTER_AT
             TWITTER_ATS
         env:
-          HOST: ${{ env.HOST }}
-          PORT: ${{ env.PORT }}
           TZ: ${{ env.TZ }}
           SCREEN_NAME: ${{ secrets.SCREEN_NAME }}
           TWITTER_CK: ${{ secrets.TWITTER_CK }}
