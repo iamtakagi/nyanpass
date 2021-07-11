@@ -6,8 +6,7 @@ import numpy as np
 import os
 
 # MeCab
-dict_path = os.getenv("MECAB_DICTIONARY_PATH", "/usr/lib64/mecab/dic/mecab-ipadic-neologd")
-mecab = MeCab.Tagger(f"-d {dict_path} -Ochasen")
+mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 with open("tweets.json", "r") as json_file:
     tweets = json.load(json_file)
