@@ -4,6 +4,7 @@ import MeCab
 from filters import filter_words
 import numpy as np
 import os
+from twitterApi import api
 
 # MeCab
 mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
