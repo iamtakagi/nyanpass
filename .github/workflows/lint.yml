@@ -35,13 +35,10 @@ jobs:
         with:
           python-version: 3.9.6
           
-      - name: Install Pipenv
+      - name: Install Pip && Depends
         run: |
           python -m pip install --upgrade pip
-          pip
-          
-      - name: Install dependencies
-        run: pipenv install --dev
+          pip install --no-cache-dir
           
       - name: Lint with flake8
-        run: pipenv run lint
+        run: flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
