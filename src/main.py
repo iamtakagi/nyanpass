@@ -1,5 +1,8 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 from tweet import tweet
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 sched = BlockingScheduler()
 class Config(object):
