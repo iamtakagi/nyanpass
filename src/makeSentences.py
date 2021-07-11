@@ -8,13 +8,16 @@ import os
 # MeCab
 mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
-with open("tweets.json", "r") as json_file:
-    tweets = json.load(json_file)
-
 with open('assets/templates.json', 'r') as json_file:
     templates = json.load(json_file)
 
 def make_sentences():
+    texts = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == env["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
+
+    # フィルター
+    data = filter_links(texts)
+    for t in data:
+        t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
 
     # ツイートリストを出力
     logging.debug(tweets)
