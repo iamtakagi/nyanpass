@@ -62,8 +62,6 @@ ENV TWITTER_ATS=${TWITTER_ATS}
 
 COPY . /app/
 
-RUN ["python", "src/exportTweets.py"]
-
 WORKDIR /app
 
 # Add script to crontab
