@@ -41,7 +41,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
     && rm /tmp/requirements.txt \
     \
     && apk del --purge .build-deps
-    
+
 WORKDIR /app
 ARG HOST
 ARG PORT
@@ -63,7 +63,7 @@ ENV TWITTER_AT=${TWITTER_AT}
 ENV TWITTER_ATS=${TWITTER_ATS}
 
 COPY src/exportTweets.py /app/
-RUN python exportTweets.py
+RUN ["python", "exportTweets.py"]
 
 COPY . /app/
 
