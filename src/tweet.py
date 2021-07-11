@@ -2,7 +2,6 @@ import tweepy
 from makeSentences import make_sentences
 import numpy as np
 from twitterApi import api 
-from exportTweets import exportTweets
 
 def tweet():
     exportTweets()
