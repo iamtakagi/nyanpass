@@ -16,18 +16,18 @@ def make_sentences():
     tweets = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == os.environ["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
 
     # フィルター
-    tweets = filter_links(tweets)
+    data = filter_links(tweets)
     for t in data:
         t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
 
     # ツイートリストを出力
-    logging.debug(tweets)
+    logging.debug(data)
 
     # 名詞を格納するリスト
     nouns = []
 
     # 全ての文章から固有名詞だけを取り出す
-    for tweet in tweets:
+    for tweet in data:
         t = tweet.replace(",", "")
         # 形態素出力
         logging.debug(mecab.parse(t))
