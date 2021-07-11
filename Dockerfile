@@ -41,7 +41,8 @@ RUN apk add --update --no-cache --virtual .build-deps \
     && rm /tmp/requirements.txt \
     \
     && apk del --purge .build-deps
-
+    
+WORKDIR /app
 ARG HOST
 ARG PORT
 ARG TZ
