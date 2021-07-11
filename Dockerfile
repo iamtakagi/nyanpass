@@ -64,6 +64,8 @@ COPY . /app/
 
 RUN ["python", "src/exportTweets.py"]
 
+WORKDIR /app
+
 # Add script to crontab
 RUN echo '*/15 * * * * cd /app; python src/tweet.py' > /var/spool/cron/crontabs/root
 
