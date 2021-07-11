@@ -1,7 +1,7 @@
 import logging
 import json
 import MeCab
-from filters import filter_words
+from filters import filter_words, filter_links
 import numpy as np
 import os
 from twitterApi import api
