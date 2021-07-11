@@ -1,0 +1,8 @@
+pandas=="*"
+requests-oauthlib=="*"
+mecab-python3=="*"
+tweepy=="*"
+numpy=="*"
+flask=="*"
+flask-cors=="*"
+flake8=="*"

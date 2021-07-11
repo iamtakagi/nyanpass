@@ -33,16 +33,16 @@ jobs:
             PORT
             TZ
             SCREEN_NAME
-            CK
-            CS
-            AT
-            ATS
+            TWITTER_CK
+            TWITTER_CS
+            TWITTER_AT
+            TWITTER_ATS
         env:
           HOST: ${{ env.HOST }}
           PORT: ${{ env.PORT }}
           TZ: ${{ env.TZ }}
           SCREEN_NAME: ${{ secrets.SCREEN_NAME }}
-          CK: ${{ secrets.CK }}
-          CS: ${{ secrets.CS }}
-          AT: ${{ secrets.AT }}
-          ATS: ${{ secrets.ATS }}
+          TWITTER_CK: ${{ secrets.TWITTER_CK }}
+          TWITTER_CS: ${{ secrets.TWITTER_CS }}
+          TWITTER_AT: ${{ secrets.TWITTER_AT }}
+          TWITTER_ATS: ${{ secrets.TWITTER_ATS }}

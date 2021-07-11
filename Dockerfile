@@ -1,4 +1,4 @@
-FROM python:3.9.2
+FROM python:3.9.6
 
 RUN apt update
 RUN apt install -y mecab libmecab-dev mecab-ipadic-utf8 swig
@@ -13,26 +13,30 @@ ARG HOST
 ARG PORT
 ARG TZ
 ARG SCREEN_NAME
-ARG CK
-ARG CS
-ARG AT
-ARG ATS
+ARG TWITTER_CK
+ARG TWITTER_CS
+ARG TWITTER_AT
+ARG TWITTER_ATS
 
-ENV HOST=$HOST
-ENV PORT=$PORT
-ENV TZ=$TZ
-ENV SCREEN_NAME=$SCREEN_NAME
-ENV CK=$CK
-ENV CS=$CS
-ENV AT=$AT
-ENV ATS=$ATS
+ENV HOST=${HOST}
+ENV PORT=${PORT}
+ENV TZ=${TZ}
+ENV SCREEN_NAME=${SCREEN_NAME}
+ENV TWITTER_CK=${TWITTER_CK}
+ENV TWITTER_CS=${TWITTER_CS}
+ENV TWITTER_AT=${TWITTER_AT}
+ENV TWITTER_ATS=${TWITTER_ATS}
 
-WORKDIR /app
-COPY Pipfile .
-COPY Pipfile.lock .
-RUN pip install pipenv && \
-    pipenv install --system
-COPY . .
+COPY src/exportTweets.py /app/
+RUN python exportTweets.py
 
-ENTRYPOINT ["python3"]
-CMD ["src/main.py"]
+COPY . /app/
+
+# Add script to crontab
+RUN echo '*/15 * * * * cd /app; python tweet.py' > /var/spool/cron/crontabs/root
+
+# Run flask
+CMD ["python", "src/main.py"]
+
+# Run crond
+ENTRYPOINT ["crond", "-f"]
