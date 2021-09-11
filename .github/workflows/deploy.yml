@@ -33,6 +33,7 @@ jobs:
             TWITTER_CS
             TWITTER_AT
             TWITTER_ATS
+            DISCORD_WEBHOOK_URL
         env:
           TZ: ${{ env.TZ }}
           SCREEN_NAME: ${{ secrets.SCREEN_NAME }}
@@ -40,3 +41,4 @@ jobs:
           TWITTER_CS: ${{ secrets.TWITTER_CS }}
           TWITTER_AT: ${{ secrets.TWITTER_AT }}
           TWITTER_ATS: ${{ secrets.TWITTER_ATS }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
