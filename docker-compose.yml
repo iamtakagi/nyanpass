@@ -12,4 +12,5 @@ services:
         TWITTER_CS: xxx
         TWITTER_AT: xxx
         TWITTER_ATS: xxx
+        DISCORD_WEBHOOK_URL: https://discord.com/api/webhooks/xxx/xx
     restart: always
