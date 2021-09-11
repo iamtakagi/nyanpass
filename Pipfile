@@ -15,7 +15,6 @@ tweepy = "*"
 numpy = "*"
 apscheduler = "*"
 requests = "*"
-asyncio = "*"
 
 [dev-packages]
 flake8 = "*"
