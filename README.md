@@ -1,5 +1,4 @@
 # renchon
-💬 単語を覚えるれんちょんbot
 
 [![Python](https://img.shields.io/badge/Python-3.9.2-blue)](https://kotlinlang.org)
 [![license](https://img.shields.io/github/license/iamtakagi/renchon)](https://github.com/iamtakagi/renchon/blob/master/LICENSE)
@@ -8,9 +7,6 @@
 [![Lint](https://github.com/iamtakagi/renchon/actions/workflows/lint.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml)
 [![Deploy](https://github.com/iamtakagi/renchon/actions/workflows/deploy.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/deploy.yml)
 
-📦 Deployed to Heroku.\
-🐳 Running on Docker.\
-🐦 Working on [Twitter](https://twitter.com/nyanpassnanon)
 
 # LICENSE
 iamtakagi/renchon is provided under the MIT license.
