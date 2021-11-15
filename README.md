@@ -7,7 +7,6 @@
 [![Lint](https://github.com/iamtakagi/renchon/actions/workflows/lint.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/ci.yml)
 [![Deploy](https://github.com/iamtakagi/renchon/actions/workflows/deploy.yml/badge.svg)](https://github.com/iamtakagi/renchon/actions/workflows/deploy.yml)
 
-
 # LICENSE
-iamtakagi/renchon is provided under the MIT license.
+nonnon-project/renchon is provided under the MIT license.
 
