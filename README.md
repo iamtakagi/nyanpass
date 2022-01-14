@@ -12,4 +12,4 @@ Randomly select a noun from the tweets in the TL and tweet it quote a line from 
 Welcome, Issues or Pull requests.
 
 ## LICENSE
-nonnon-project/renchon is provided under the MIT license.
+iamtakagi/renchon is provided under the MIT license.
