@@ -1,5 +1,5 @@
 import tweepy
-from makeSentences import make_sentences
+from makeTweetSentences import make_tweet_sentences
 import numpy as np
 from twitterApi import api 
 from discordWebhook import send
@@ -11,7 +11,7 @@ def tweet():
         nyanpass_status = api.update_status(status = "にゃんぱすー", media_ids=[media.media_id])
         nyanpass_link = f'https://twitter.com/nyanpassnanon/status/{nyanpass_status.id}'
         send(nyanpass_link)
-    sentence_1, sentence_2 = make_sentences()
+    sentence_1, sentence_2 = make_tweet_sentences()
     tweet_result_1 = api.update_status(status = sentence_1)
     tweet_result_2 = api.update_status(status = sentence_2)
     status_link_1 = f'https://twitter.com/nyanpassnanon/status/{tweet_result_1.id}'

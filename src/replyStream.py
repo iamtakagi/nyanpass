@@ -1,5 +1,5 @@
 from tweepy import Stream, StreamListener
-from makeReplySentence import makeReplySentence
+from makeReplySentence import make_reply_sentence
 from twitterApi import api
 
 # Twitter streaming
@@ -7,7 +7,7 @@ class ReplyStreamListener(StreamListener):
 
     def on_status(self, status):
         print("[Info] Retrieved tweet: ", status.text)
-        reply_msg = makeReplySentence(status)
+        reply_msg = make_reply_sentence(status)
         if "@nyanpassnanon" in reply_msg:
             pass
             print("This tweet contains reply to @nyanpassnanon, skipped.")

@@ -5,11 +5,12 @@ from filters import filter_words, filter_links
 import numpy as np
 import os
 from twitterApi import api
+from templates import templates
 
 # MeCab
 mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
-def make_sentences():
+def make_tweet_sentences():
     tweets = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == os.environ["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
 
     # フィルター
