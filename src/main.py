@@ -1,8 +1,6 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 from tweet import tweet
 import logging
-from replyStream import ReplyStreamListener, ReplyStream
-from twitterAuth import auth
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -15,7 +13,4 @@ def cron_tweet():
     tweet()
     
 if __name__ == "__main__":
-    listener = ReplyStreamListener()
-    stream = ReplyStream(auth, listener)
-    stream.start()
     sched.start()
