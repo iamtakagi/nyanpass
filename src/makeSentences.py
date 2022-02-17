@@ -9,9 +9,6 @@ from twitterApi import api
 # MeCab
 mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
-with open('assets/templates.json', 'r') as json_file:
-    templates = json.load(json_file)
-
 def make_sentences():
     tweets = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == os.environ["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
 
@@ -29,10 +26,11 @@ def make_sentences():
     # 全ての文章から固有名詞だけを取り出す
     for tweet in data:
         t = tweet.replace(",", "")
+        parsed = mecab.parse(t)
         # 形態素出力
-        logging.debug(mecab.parse(t))
+        logging.debug(parsed)
         # 名詞を格納
-        for n in [line for line in mecab.parse(t).splitlines() if "固有名詞" in line.split()[-1]]:
+        for n in [line for line in parsed.splitlines() if "固有名詞" in line.split()[-1]]:
             noun = n.split("\t")[0]
             # 重複チェック
             if not noun in nouns:
