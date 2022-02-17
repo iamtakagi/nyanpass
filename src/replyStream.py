@@ -29,4 +29,4 @@ class ReplyStream():
         self.stream = Stream(auth=auth, listener=listener)
 
     def start(self):
-        self.stream.filter(track=["@nyanpassnanon"])
+        self.stream.filter(track=["@nyanpassnanon"], languages=["ja"])
