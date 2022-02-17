@@ -35,7 +35,7 @@ def make_reply_sentence(status):
         # フィルター
         t = text.replace(",", "")
         t = normalize_text(t)
-        t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
+        t = t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
         # 文章から固有名詞だけを取り出す
         for n in [line for line in mecab.parse(t).splitlines() if "固有名詞" in line.split()[-1]]:
             # 名詞を格納
