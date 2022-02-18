@@ -18,13 +18,13 @@ def janken(screen_name, text):
     text = text.replace("ぐー", "グー").replace("ちょき", "チョキ").replace("ぱー", "パー")
     janken = ""
     # あいこ
-    if result == text: 
+    if result in text: 
         janken = "@{} {}なん！あいこなん！".format(screen_name, result)
     # 勝ちパターン
-    if result == "グー" and text == "チョキ" or result == "チョキ" and text == "パー" or result == "パー" and text == "グー":
+    if result == "グー" and "チョキ" in text or result == "チョキ" and "パー" in text or result == "パー" and "グー" in text:
         janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
     # 負けパターン
-    if result == "グー" and text == "パー" or result == "チョキ" and text == "グー" or result == "パー" and text == "チョキ":
+    if result == "グー" and "パー" in text or result == "チョキ" and "グー" in text or result == "パー" and "チョキ" in text:
         janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
     return janken
 
