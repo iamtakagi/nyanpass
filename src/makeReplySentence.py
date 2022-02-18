@@ -11,7 +11,7 @@ import re
 mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 def omikuji(screen_name):
-    return "@{} {}なん！".format(screen_name, random.choice(("凶", "大凶", "末吉", "吉", "小吉", "中吉", "大吉")))
+    return "@{} {}なん！".format(screen_name, random.choice(("大吉", "中吉", "小吉", "吉", "半吉", "末吉", "末小吉", "凶", "小凶", "半凶", "末凶", "大凶")))
 
 def janken(screen_name, text):
     result = random.choice(("グー", "チョキ", "パー"))
