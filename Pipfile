@@ -15,6 +15,8 @@ tweepy = "*"
 numpy = "*"
 apscheduler = "*"
 requests = "*"
+flask = "*"
+flask-cors ="*"
 
 [dev-packages]
 flake8 = "*"
