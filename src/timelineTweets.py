@@ -2,6 +2,8 @@ import os
 
 import json
 
+from matplotlib.font_manager import json_dump
+
 from twitterApi import api
 
 dest = 'data/timeline_tweets.json'
@@ -13,7 +15,7 @@ def fetch_timeline_tweets():
             current.close()
     with open(dest, mode = "w") as file:
         tweets = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == os.environ["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
-        file.write(tweets)
+        file.write(json.dumps(tweets))
 
 def get_tweets():
     if not os.path.isfile(dest):
