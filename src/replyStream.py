@@ -8,6 +8,7 @@ class ReplyStreamListener(StreamListener):
     def on_status(self, status):
         print("[Info] Retrieved tweet: ", status.text)
         reply_msg = make_reply_sentence(status)
+        if reply_msg == None: pass
         if "@nyanpassnanon" in reply_msg:
             pass
             print("This tweet contains reply to @nyanpassnanon, skipped.")

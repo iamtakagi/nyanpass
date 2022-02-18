@@ -13,8 +13,8 @@ def make_reply_sentence(status):
     screen_name = status.user.screen_name
     text = status.text.replace(",", "")
     text = normalize_text(text)
-    text = text.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
-    response = "@{} 何を言っているのかうちには理解できないのん。".format(screen_name)
+    text = text.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。").replace('@nyanpassnanon', "")
+    response = None
     # 占い
     if "占って" in text or "おみくじ" in text:
         response = "@{} {}なん！".format(status.user.screen_name, random.choice(("凶", "大凶", "末吉", "吉", "小吉", "中吉", "大吉")))
@@ -49,6 +49,7 @@ def make_reply_sentence(status):
             # 重複チェック
             if not noun in nouns:
                 nouns.append(noun)
+        if len(nouns) == 0: return response
         # ランダムな名詞を選び、語幹 + 名詞 + 語尾 の形で文章を2つ生成する
         s = np.random.choice(templates)
         n = filter_words(np.random.choice(nouns))
