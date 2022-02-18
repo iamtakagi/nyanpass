@@ -17,8 +17,9 @@ def make_reply_sentence(status):
     if "占って" in text or "うらなって" in text or "おみくじ" in text:
         return "@{} {}なん！".format(screen_name, random.choice(("凶", "大凶", "末吉", "吉", "小吉", "中吉", "大吉")))
     # じゃんけん
-    if "グー" in text or "チョキ" in text or "パー":
+    if "グー" in text or "チョキ" in text or "パー" in text or "ぐー" in text or "ちょき" in text or "パー" in text:
         result = random.choice(("グー", "チョキ", "パー"))
+        text = text.replace("ぐー", "グー").replace("ちょき", "チョキ").replace("ぱー", "パー")
          # あいこ
         if result == text: 
             return "@{} {}なん！あいこなん！".format(screen_name, result)
