@@ -11,11 +11,11 @@ ENV MECABRC="/etc/mecabrc"
 ENV MECAB_DICTIONARY_PATH=/usr/local/lib/mecab/dic/mecab-ipadic-neologd
 
 WORKDIR /app
-COPY Pipfile .
-COPY Pipfile.lock .
-RUN pip install pipenv && \
-    pipenv install --system
-COPY . .
+
+COPY . /app/
+RUN python -m pip install --upgrade pip \
+    && pip install --no-cache-dir \
+    -r requirements.txt
 
 WORKDIR /app/src
-CMD [ "uvicorn", "main:app", "--host", ${HOST}, "--port", ${PORT} ]
+CMD uvicorn main:app --host ${HOST} --port ${PORT}

@@ -40,9 +40,9 @@ app.add_middleware(
 
 @app.get("/api/make_sentence")
 async def make_sentence():
-    sentence_1, sentence_2 = make_sentences()
     if not get_tweets():
         fetch_timeline_tweets()
+    sentence_1, sentence_2 = make_sentences()
     return JSONResponse(content={"sentence": sentence_1})
     
 

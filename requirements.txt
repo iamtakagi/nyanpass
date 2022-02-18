@@ -1,0 +1,9 @@
+pandas
+requests-oauthlib
+mecab-python3
+numpy
+apscheduler
+requests
+fastapi
+tweepy==3.10.0
+uvicorn
