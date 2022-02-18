@@ -6,8 +6,8 @@ from discordWebhook import send
 
 def tweet():
     fetch_timeline_tweets()
-    # 30%の確率で「にゃんぱすー」を呟く
-    if np.random.randint(1,71) == 1:
+    # 10%の確率で「にゃんぱすー」を呟く
+    if np.random.randint(1,91) == 1:
         media = api.media_upload("assets/renge.gif")
         nyanpass_status = api.update_status(status = "にゃんぱすー", media_ids=[media.media_id])
         nyanpass_link = f'https://twitter.com/nyanpassnanon/status/{nyanpass_status.id}'
