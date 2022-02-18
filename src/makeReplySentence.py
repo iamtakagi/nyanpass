@@ -21,23 +21,25 @@ def make_reply_sentence(status):
     if re.compile(r"(?:[ぐぱグパ]ー|ちょき|チョキ)").search(text):
         result = random.choice(("グー", "チョキ", "パー"))
         text = text.replace("ぐー", "グー").replace("ちょき", "チョキ").replace("ぱー", "パー")
-         # あいこ
+        janken = "@{} {}なん！あいこなん！".format(screen_name, result)
+        # あいこ
         if result == text: 
-            return "@{} {}なん！あいこなん！".format(screen_name, result)
+            janken = "@{} {}なん！あいこなん！".format(screen_name, result)
         # 勝ちパターン
         if result == "グー" and text == "チョキ":
-            return "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
+            janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
         if result == "チョキ" and text == "パー": 
-            return "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
+            janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
         if result == "パー" and text == "グー": 
-            return "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
+            janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
         # 負けパターン
         if result == "グー" and text == "パー":
-            return "@{} {}なん！うちの負けなん！".format(screen_name, result)
+            janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
         if result == "チョキ" and text == "グー":
-            return "@{} {}なん！うちの負けなん！".format(screen_name, result)
+            janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
         if result == "パー" and text == "チョキ":
-            return "@{} {}なん！うちの負けなん！".format(screen_name, result)
+            janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
+        return janken
     if text:
         if not get_tweets():
             fetch_timeline_tweets()
