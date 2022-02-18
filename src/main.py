@@ -15,7 +15,7 @@ def cron_tweet():
     tweet()
     
 if __name__ == "__main__":
-    listener = ReplyStreamListener()
-    stream = ReplyStream(auth, listener)
-    stream.start()
+    #listener = ReplyStreamListener()
+    #stream = ReplyStream(auth, listener)
+    #stream.start()
     sched.start()
