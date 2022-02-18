@@ -5,7 +5,7 @@ from filters import filter_words, filter_links
 import numpy as np
 from twitterApi import api
 from templates import templates
-from timelineTweets import get_tweets, tweets
+from timelineTweets import get_tweets
 import os
 
 # MeCab
