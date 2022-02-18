@@ -3,6 +3,8 @@ from tweet import tweet
 import logging
 from replyStream import ReplyStreamListener, ReplyStream
 from twitterAuth import auth
+from twitterApi import api
+import os
 
 logging.basicConfig(level=logging.DEBUG)
 

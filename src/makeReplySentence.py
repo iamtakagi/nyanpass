@@ -4,7 +4,7 @@ import MeCab
 import numpy as np
 
 from makeTweetSentences import make_tweet_sentences
-from timelineTweets import tweets, fetch_timeline_tweets
+from timelineTweets import get_tweets, tweets, fetch_timeline_tweets
 from filters import normalize_text
 
 # MeCab
@@ -40,7 +40,7 @@ def make_reply_sentence(status):
         elif result == "パー" and text == "チョキ":
             response = "@{} {}なん！うちの負けなん！".format(screen_name, result)
     else:
-        if len(tweets) == 0:
+        if not get_tweets():
             fetch_timeline_tweets()
         sentence_1, sentence_2 = make_tweet_sentences() 
         response = "@{} {}".format(screen_name, sentence_1)

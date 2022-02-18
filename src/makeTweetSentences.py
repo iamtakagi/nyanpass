@@ -3,15 +3,16 @@ import json
 import MeCab
 from filters import filter_words, filter_links
 import numpy as np
-import os
 from twitterApi import api
 from templates import templates
-from timelineTweets import tweets
+from timelineTweets import get_tweets, tweets
+import os
 
 # MeCab
 mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 def make_tweet_sentences():
+    tweets = get_tweets()
     # フィルター
     data = filter_links(tweets)
     for t in data:

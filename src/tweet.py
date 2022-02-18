@@ -1,9 +1,8 @@
-import tweepy
 from makeTweetSentences import make_tweet_sentences
 import numpy as np
+from timelineTweets import fetch_timeline_tweets
 from twitterApi import api 
 from discordWebhook import send
-from timelineTweets import fetch_timeline_tweets
 
 def tweet():
     fetch_timeline_tweets()
