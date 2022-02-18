@@ -3,8 +3,10 @@ from makeTweetSentences import make_tweet_sentences
 import numpy as np
 from twitterApi import api 
 from discordWebhook import send
+from timelineTweets import fetch_timeline_tweets
 
 def tweet():
+    fetch_timeline_tweets()
     # 30%の確率で「にゃんぱすー」を呟く
     if np.random.randint(1,71) == 1:
         media = api.media_upload("assets/renge.gif")

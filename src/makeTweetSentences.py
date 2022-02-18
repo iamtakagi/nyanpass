@@ -6,13 +6,12 @@ import numpy as np
 import os
 from twitterApi import api
 from templates import templates
+from timelineTweets import tweets
 
 # MeCab
 mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 def make_tweet_sentences():
-    tweets = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == os.environ["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
-
     # フィルター
     data = filter_links(tweets)
     for t in data:
@@ -47,10 +46,6 @@ def make_tweet_sentences():
     n_2 = filter_words(np.random.choice(nouns))
     sentence_1 = s_1["gokan"] + n_1 + s_1["gobi"]
     sentence_2 = s_2["gokan"] + n_2 + s_2["gobi"]
-
-    # 文章を出力
-    logging.debug(sentence_1)
-    logging.debug(sentence_2)
 
     # 文章を返す
     return sentence_1, sentence_2
