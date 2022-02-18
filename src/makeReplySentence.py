@@ -17,18 +17,25 @@ def make_reply_sentence(status):
     if "占って" in text or "おみくじ" in text:
         response = "@{} {}なん！".format(status.user.screen_name, random.choice(("凶", "大凶", "末吉", "吉", "小吉", "中吉", "大吉")))
     # じゃんけん
-    elif "グー" in text or "チョキ" in text or "パー" in text:
+    elif "グー" in text or "チョキ" in text or "パー" in text or "ぐー" in text or "ちょき" in text or "ぱー" in text:
         result = random.choice(("グー", "チョキ", "パー"))
          # あいこ
-        if result == text: response = "@{} {}なん！あいこなん！".format(status.user.screen_name, result)
+        if result == text: 
+            response = "@{} {}なん！あいこなん！".format(status.user.screen_name, result)
         # 勝ちパターン
-        elif result == "グー" and text == "チョキ": response = "@{} {}なん！うちの勝ちなん！".format(status.user.screen_name, result)
-        elif result == "チョキ" and text == "パー": response = "@{} {}なん！うちの勝ちなん！".format(status.user.screen_name, result)
-        elif result == "パー" and text == "グー": response = "@{} {}なん！うちの勝ちなん！".format(status.user.screen_name, result)
+        elif result == "グー" and text == "チョキ":
+            response = "@{} {}なん！うちの勝ちなん！".format(status.user.screen_name, result)
+        elif result == "チョキ" and text == "パー": 
+            response = "@{} {}なん！うちの勝ちなん！".format(status.user.screen_name, result)
+        elif result == "パー" and text == "グー": 
+            response = "@{} {}なん！うちの勝ちなん！".format(status.user.screen_name, result)
         # 負けパターン
-        elif result == "グー" and text == "パー": response = "@{} {}なん！うちの負けなん！".format(status.user.screen_name, result)
-        elif result == "チョキ" and text == "グー": response = "@{} {}なん！うちの負けなん！".format(status.user.screen_name, result)
-        elif result == "パー" and text == "チョキ": response = "@{} {}なん！うちの負けなん！".format(status.user.screen_name, result)
+        elif result == "グー" and text == "パー":
+            response = "@{} {}なん！うちの負けなん！".format(status.user.screen_name, result)
+        elif result == "チョキ" and text == "グー":
+            response = "@{} {}なん！うちの負けなん！".format(status.user.screen_name, result)
+        elif result == "パー" and text == "チョキ":
+            response = "@{} {}なん！うちの負けなん！".format(status.user.screen_name, result)
     else:
         # ツイート文から名詞を抜き取って台詞風に返信する。名詞がなければ返信しない。
         nouns = []
