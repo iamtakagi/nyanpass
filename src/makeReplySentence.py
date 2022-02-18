@@ -21,24 +21,16 @@ def make_reply_sentence(status):
     if re.compile(r"(?:[ぐぱグパ]ー|ちょき|チョキ)").search(text):
         result = random.choice(("グー", "チョキ", "パー"))
         text = text.replace("ぐー", "グー").replace("ちょき", "チョキ").replace("ぱー", "パー")
-        janken = "@{} {}なん！あいこなん！".format(screen_name, result)
+        janken = ""
+        # 勝ちパターン
+        if result == "グー" and text == "チョキ" or result == "チョキ" and text == "パー" or result == "パー" and text == "グー":
+            janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
+        # 負けパターン
+        if result == "グー" and text == "パー" or result == "チョキ" and text == "グー" or result == "パー" and text == "チョキ":
+            janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
         # あいこ
         if result == text: 
             janken = "@{} {}なん！あいこなん！".format(screen_name, result)
-        # 勝ちパターン
-        if result == "グー" and text == "チョキ":
-            janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
-        if result == "チョキ" and text == "パー": 
-            janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
-        if result == "パー" and text == "グー": 
-            janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
-        # 負けパターン
-        if result == "グー" and text == "パー":
-            janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
-        if result == "チョキ" and text == "グー":
-            janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
-        if result == "パー" and text == "チョキ":
-            janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
         return janken
     if text:
         if not get_tweets():
