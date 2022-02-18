@@ -1,4 +1,4 @@
-from tweepy
+import tweepy
 from makeReplySentence import make_reply_sentence
 from twitterApi import api
 
