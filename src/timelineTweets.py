@@ -1,6 +1,6 @@
 import os
 
-from itsdangerous import json
+import json
 from twitterApi import api
 
 dest = 'data/timline_tweets.json'
