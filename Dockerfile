@@ -17,5 +17,5 @@ RUN python -m pip install --upgrade pip \
     && pip install --no-cache-dir \
     -r requirements.txt
 
-WORKDIR /app/src
-CMD uvicorn main:app --host ${HOST} --port ${PORT}
+ENTRYPOINT ["python3"]
+CMD ["src/main.py"]
