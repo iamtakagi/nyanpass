@@ -161,3 +161,5 @@ dmypy.json
 .vscode
 
 Dockerfile.local
+
+docker-compose.yml
