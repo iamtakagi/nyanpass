@@ -32,7 +32,6 @@ jobs:
             HOST
             PORT
             TZ
-            TZ
             SCREEN_NAME
             TWITTER_CK
             TWITTER_CS
