@@ -4,7 +4,7 @@ import MeCab
 import numpy as np
 
 from makeTweetSentences import make_tweet_sentences
-from timelineTweets import get_tweets, tweets, fetch_timeline_tweets
+from timelineTweets import get_tweets, fetch_timeline_tweets
 from filters import normalize_text
 
 # MeCab
