@@ -1,9 +1,8 @@
-from tweepy import Stream, StreamListener
+from tweepy
 from makeReplySentence import make_reply_sentence
 from twitterApi import api
 
-# Twitter streaming
-class ReplyStreamListener(StreamListener):
+class ReplyStreamListener(tweepy.StreamListener):
 
     def on_status(self, status):
         print("[Info] Retrieved tweet: ", status.text)
@@ -27,7 +26,7 @@ class ReplyStreamListener(StreamListener):
 
 class ReplyStream():
     def __init__(self, auth, listener):
-        self.stream = Stream(auth=auth, listener=listener)
+        self.stream = tweepy.Stream(auth=auth, listener=listener)
 
     def start(self):
         self.stream.filter(track=["@nyanpassnanon"], languages=["ja"])
