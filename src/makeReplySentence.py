@@ -14,33 +14,32 @@ def make_reply_sentence(status):
     text = status.text.replace(",", "")
     text = normalize_text(text)
     text = text.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。").replace('@nyanpassnanon', "")
-    response = None
     # 占い
-    if "占って" in text or "おみくじ" in text:
-        response = "@{} {}なん！".format(screen_name, random.choice(("凶", "大凶", "末吉", "吉", "小吉", "中吉", "大吉")))
+    if "占って" in text or "うらなって" in text or "おみくじ" in text:
+        return "@{} {}なん！".format(screen_name, random.choice(("凶", "大凶", "末吉", "吉", "小吉", "中吉", "大吉")))
     # じゃんけん
     if "グー" in text or "チョキ" in text or "パー" in text or "ぐー" in text or "ちょき" in text or "ぱー" in text:
         result = random.choice(("グー", "チョキ", "パー"))
          # あいこ
         if result == text: 
-            response = "@{} {}なん！あいこなん！".format(screen_name, result)
+            return "@{} {}なん！あいこなん！".format(screen_name, result)
         # 勝ちパターン
         elif result == "グー" and text == "チョキ":
-            response = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
+            return "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
         elif result == "チョキ" and text == "パー": 
-            response = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
+            return "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
         elif result == "パー" and text == "グー": 
-            response = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
+            return "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
         # 負けパターン
         elif result == "グー" and text == "パー":
-            response = "@{} {}なん！うちの負けなん！".format(screen_name, result)
+            return "@{} {}なん！うちの負けなん！".format(screen_name, result)
         elif result == "チョキ" and text == "グー":
-            response = "@{} {}なん！うちの負けなん！".format(screen_name, result)
+            return "@{} {}なん！うちの負けなん！".format(screen_name, result)
         elif result == "パー" and text == "チョキ":
-            response = "@{} {}なん！うちの負けなん！".format(screen_name, result)
+            return "@{} {}なん！うちの負けなん！".format(screen_name, result)
     else:
         if not get_tweets():
             fetch_timeline_tweets()
         sentence_1, sentence_2 = make_tweet_sentences() 
-        response = "@{} {}".format(screen_name, sentence_1)
-    return response
+        return "@{} {}".format(screen_name, sentence_1)
+    return None
