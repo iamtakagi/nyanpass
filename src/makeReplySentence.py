@@ -23,18 +23,18 @@ def make_reply_sentence(status):
         if result == text: 
             return "@{} {}なん！あいこなん！".format(screen_name, result)
         # 勝ちパターン
-        elif result == "グー" and text == "チョキ":
+        if result == "グー" and text == "チョキ":
             return "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
-        elif result == "チョキ" and text == "パー": 
+        if result == "チョキ" and text == "パー": 
             return "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
-        elif result == "パー" and text == "グー": 
+        if result == "パー" and text == "グー": 
             return "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
         # 負けパターン
-        elif result == "グー" and text == "パー":
+        if result == "グー" and text == "パー":
             return "@{} {}なん！うちの負けなん！".format(screen_name, result)
-        elif result == "チョキ" and text == "グー":
+        if result == "チョキ" and text == "グー":
             return "@{} {}なん！うちの負けなん！".format(screen_name, result)
-        elif result == "パー" and text == "チョキ":
+        if result == "パー" and text == "チョキ":
             return "@{} {}なん！うちの負けなん！".format(screen_name, result)
     else:
         if not get_tweets():
