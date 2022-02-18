@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[scripts]
+
+[packages]
+pandas = "*"
+requests-oauthlib = "*"
+mecab-python3 = "*"
+numpy = "*"
+apscheduler = "*"
+requests = "*"
+fastapi = "*"
+tweepy = "==3.10.0"
+
+[dev-packages]
+flake8 = "*"
+
+[requires]
+python_version = "3.9"

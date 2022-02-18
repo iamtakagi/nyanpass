@@ -1,8 +1,0 @@
-pandas = "*"
-requests-oauthlib = "*"
-mecab-python3 = "*"
-numpy = "*"
-apscheduler = "*"
-requests = "*"
-tweepy = "==3.10.0"
-fastapi = "*"
