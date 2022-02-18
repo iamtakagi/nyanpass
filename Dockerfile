@@ -45,25 +45,8 @@ RUN apk add --update --no-cache --virtual .build-deps \
 ENV MECABRC="/etc/mecabrc"
 ENV MECAB_DICTIONARY_PATH=/usr/local/lib/mecab/dic/mecab-ipadic-neologd
 
-ARG SCREEN_NAME
-ARG TWITTER_CK
-ARG TWITTER_CS
-ARG TWITTER_AT
-ARG TWITTER_ATS
-ARG DISCORD_WEBHOOK_URL
-ARG HOST
-
-ENV HOST=${HOST}
-ENV PORT=8080
-ENV SCREEN_NAME=${SCREEN_NAME}
-ENV TWITTER_CK=${TWITTER_CK}
-ENV TWITTER_CS=${TWITTER_CS}
-ENV TWITTER_AT=${TWITTER_AT}
-ENV TWITTER_ATS=${TWITTER_ATS}
-ENV DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
-
 WORKDIR /app
 COPY . /app/
 
-ENTRYPOINT ["python3"]
-CMD ["src/main.py"]
+WORKDIR /app/src
+CMD [ "uvicorn", "main:app", "--host", ${HOST}, "--port", ${PORT} ]

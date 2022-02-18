@@ -3,9 +3,7 @@ version: '3.8'
 services:
   app:
     container_name: renchon
-    build:
-      context: .
-      args:
+    environment:
         HOST: 0.0.0.0
         PORT: 8080
         TZ: Asia/Tokyo
