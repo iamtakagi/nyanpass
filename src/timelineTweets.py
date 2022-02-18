@@ -15,8 +15,10 @@ def fetch_timeline_tweets():
         file.write(tweets)
 
 def get_tweets():
+    tweets = []
     if not os.path.isfile("data/home_timeline.json"):
-        return []
+        return tweets
     with open(dest, "r") as file:
-        tweets = json.load(file)
+        json = json.load(file)
+        tweets = [s.text for s in json if not s.user.screen_name == os.environ["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
         return tweets
