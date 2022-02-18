@@ -11,7 +11,9 @@ mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 def make_reply_sentence(status):
     screen_name = status.user.screen_name
-    text = status.text
+    text = status.text.replace(",", "")
+    text = normalize_text(text)
+    text = text.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
     response = "@{} 何を言っているのかうちには理解できないのん。".format(screen_name)
     # 占い
     if "占って" in text or "おみくじ" in text:
@@ -40,11 +42,8 @@ def make_reply_sentence(status):
         # ツイート文から名詞を抜き取って台詞風に返信する。名詞がなければ返信しない。
         nouns = []
         # フィルター
-        t = text.replace(",", "")
-        t = normalize_text(t)
-        t = t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。") + ","
         # 文章から固有名詞だけを取り出す
-        for n in [line for line in mecab.parse(t).splitlines() if "固有名詞" in line.split()[-1]]:
+        for n in [line for line in mecab.parse(text).splitlines() if "固有名詞" in line.split()[-1]]:
             # 名詞を格納
             noun = n.split("\t")[0]
             # 重複チェック
