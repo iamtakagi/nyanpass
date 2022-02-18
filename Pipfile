@@ -11,12 +11,12 @@ start = "python src/generator.py"
 pandas = "*"
 requests-oauthlib = "*"
 mecab-python3 = "*"
-tweepy = "3.10.0"
 numpy = "*"
 apscheduler = "*"
 requests = "*"
 flask = "*"
 flask-cors ="*"
+tweepy = "==3.10.0"
 
 [dev-packages]
 flake8 = "*"
