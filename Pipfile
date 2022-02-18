@@ -14,8 +14,6 @@ mecab-python3 = "*"
 numpy = "*"
 apscheduler = "*"
 requests = "*"
-flask = "*"
-flask-cors ="*"
 tweepy = "==3.10.0"
 
 [dev-packages]

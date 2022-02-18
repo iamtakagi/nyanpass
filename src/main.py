@@ -5,8 +5,6 @@ from tweet import tweet
 import logging
 from replyStream import ReplyStreamListener, ReplyStream
 from twitterAuth import auth
-from flask_cors import CORS
-from flask import Flask, jsonify
 import os
 
 logging.basicConfig(level=logging.DEBUG)
@@ -28,22 +26,5 @@ def reply_stream():
     stream.start()
 
 
-app = Flask(__name__)
-CORS(app)
-
-@app.get("/api/make_sentence")
-async def make_sentence():
-    sentence_1, sentence_2 = make_sentences()
-    if not get_tweets():
-        fetch_timeline_tweets()
-    return jsonify({'sentence': sentence_1})
-    
-
 if __name__ == "__main__":
-    app.run (
-          threaded=True,
-          host = os.environ["HOST"], 
-          port = os.environ["PORT"], 
-          debug=False
-    )
     sched.start()
