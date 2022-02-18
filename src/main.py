@@ -15,9 +15,9 @@ def cron_tweet():
     tweet()
 
 
-@sched.scheduled_job('interval', id='reply_stream', seconds=60)　
+@sched.scheduled_job('interval', id='reply_stream', seconds=60)
 def reply_stream():
-　　 listener = ReplyStreamListener()
+    listener = ReplyStreamListener()
     stream = ReplyStream(auth, listener)
     stream.start()
 
