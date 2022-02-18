@@ -6,6 +6,8 @@ services:
     build:
       context: .
       args:
+        HOST: 0.0.0.0
+        PORT: 8080
         TZ: Asia/Tokyo
         SCREEN_NAME: nyanpassnanon
         TWITTER_CK: xxx

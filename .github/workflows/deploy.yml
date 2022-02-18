@@ -10,6 +10,8 @@ on:
       - '**.md'
 
 env:
+  HOST: 0.0.0.0
+  PORT: 80
   TZ: Asia/Tokyo
 
 jobs:
@@ -25,8 +27,11 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
-          docker_heroku_process_type: worker
+          docker_heroku_process_type: web
           docker_build_args: |
+            HOST
+            PORT
+            TZ
             TZ
             SCREEN_NAME
             TWITTER_CK
@@ -35,6 +40,8 @@ jobs:
             TWITTER_ATS
             DISCORD_WEBHOOK_URL
         env:
+          HOST: ${{ env.HOST }}
+          PORT: ${{ env.PORT }}
           TZ: ${{ env.TZ }}
           SCREEN_NAME: ${{ secrets.SCREEN_NAME }}
           TWITTER_CK: ${{ secrets.TWITTER_CK }}
