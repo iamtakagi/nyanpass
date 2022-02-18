@@ -5,8 +5,7 @@ Randomly select a noun from the tweets in the TL and tweet it quote a line from 
 [![license](https://img.shields.io/github/license/nonnon-project/renchon)](https://github.com/nonnon-project/renchon/blob/master/LICENSE)
 [![issues](https://img.shields.io/github/issues/nonnon-project/renchon)](https://github.com/nonnon-project/renchon/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/nonnon-project/renchon)](https://github.com/nonnon-project/renchon/pulls)
-[![Lint](https://github.com/nonnon-project/renchon/actions/workflows/lint.yml/badge.svg)](https://github.com/nonnon-project/renchon/actions/workflows/ci.yml)
-[![Deploy](https://github.com/nonnon-project/renchon/actions/workflows/deploy.yml/badge.svg)](https://github.com/nonnon-project/renchon/actions/workflows/deploy.yml)
+[![latest](https://github.com/nonnon-project/renchon/actions/workflows/latest.yml/badge.svg)](https://github.com/nonnon-project/renchon/actions/workflows/latest.yml)
 
 ## Contribution
 Welcome, Issues or Pull requests.
