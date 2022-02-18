@@ -7,9 +7,6 @@ from timelineTweets import get_tweets, fetch_timeline_tweets
 from filters import normalize_text
 import re
 
-# MeCab
-mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
-
 def omikuji(screen_name):
     return "@{} {}なん！".format(screen_name, random.choice(("大吉", "中吉", "小吉", "吉", "半吉", "末吉", "末小吉", "凶", "小凶", "半凶", "末凶", "大凶")))
 
