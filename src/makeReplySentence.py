@@ -11,7 +11,7 @@ mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
 def make_reply_sentence(status):
     screen_name = status.user.screen_name
-    text = normalize_text(text)
+    text = normalize_text(status.text)
     text = text.replace(",", "").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。").replace('@nyanpassnanon', "")
     # 占い
     if "占って" in text or "うらなって" in text or "おみくじ" in text:
