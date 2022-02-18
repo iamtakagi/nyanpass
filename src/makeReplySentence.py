@@ -1,5 +1,4 @@
 import random
-from urllib import response
 import MeCab
 import numpy as np
 
