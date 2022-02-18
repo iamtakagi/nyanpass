@@ -2,7 +2,7 @@ import tweepy
 from makeReplySentence import make_reply_sentence
 from twitterApi import api
 
-class ReplyStreamListener(tweepy.StreamListener):
+class ReplyStreamListener(tweepy.Stream):
 
     def on_status(self, status):
         print("[Info] Retrieved tweet: ", status.text)
