@@ -1,9 +1,6 @@
 import os
 
 import json
-
-from matplotlib.font_manager import json_dump
-
 from twitterApi import api
 
 dest = 'data/timeline_tweets.json'
