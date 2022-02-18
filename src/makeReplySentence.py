@@ -36,7 +36,7 @@ def make_reply_sentence(status):
             return "@{} {}なん！うちの負けなん！".format(screen_name, result)
         if result == "パー" and text == "チョキ":
             return "@{} {}なん！うちの負けなん！".format(screen_name, result)
-    else:
+    if text:
         if not get_tweets():
             fetch_timeline_tweets()
         sentence_1, sentence_2 = make_tweet_sentences() 
