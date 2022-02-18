@@ -14,10 +14,10 @@ def make_reply_sentence(status):
     text = status.text
     response = "@{} 何を言っているのかうちには理解できないのん。".format(screen_name)
     # 占い
-    if "占って" or "おみくじ" in text:
+    if "占って" in text or "おみくじ" in text:
         response = "@{} {}なん！".format(status.user.screen_name, random.choice(("凶", "大凶", "末吉", "吉", "小吉", "中吉", "大吉")))
     # じゃんけん
-    elif "グー" or "チョキ" or "パー" in text:
+    elif "グー" in text or "チョキ" in text or "パー" in text:
         result = random.choice(("グー", "チョキ", "パー"))
          # あいこ
         if result == text: response = "@{} {}なん！あいこなん！".format(status.user.screen_name, result)
