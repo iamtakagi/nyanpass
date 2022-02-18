@@ -11,7 +11,7 @@ import os
 # MeCab
 mecab = MeCab.Tagger(f"-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen")
 
-def make_tweet_sentences():
+def make_sentences():
     tweets = get_tweets()
     # フィルター
     data = filter_links(tweets)

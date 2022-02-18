@@ -2,7 +2,7 @@ import random
 import MeCab
 import numpy as np
 
-from makeTweetSentences import make_tweet_sentences
+from makeSentences import make_sentences
 from timelineTweets import get_tweets, fetch_timeline_tweets
 from filters import normalize_text
 import re
@@ -38,6 +38,6 @@ def make_reply_sentence(status):
     if text:
         if not get_tweets():
             fetch_timeline_tweets()
-        sentence_1, sentence_2 = make_tweet_sentences() 
+        sentence_1, sentence_2 = make_sentences() 
         return "@{} {}".format(screen_name, sentence_1)
     return None
