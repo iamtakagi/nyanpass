@@ -4,16 +4,15 @@ import json
 
 from twitterApi import api
 
-dest = 'data/timline_tweets.json'
+dest = 'data/timeline_tweets.json'
 
 def fetch_timeline_tweets():
-    tweets = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == os.environ["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text]
     if os.path.isfile(dest):
         with open(dest, mode = 'r+') as current:
             current.truncate(0)
             current.close()
     with open(dest, mode = "w") as file:
-        file.write(json.dumps(tweets))
+        file.write(json.dumps(api.home_timeline(count = 100)))
 
 def get_tweets():
     tweets = []
