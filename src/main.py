@@ -31,11 +31,11 @@ CORS(app)
 
 @app.get("/api/make_sentence")
 async def make_sentence():
-    if not get_tweets():
-        fetch_timeline_tweets()
     # 10%の確率で「にゃんぱすー」を返す
     if np.random.randint(1,91) == 1:
         return jsonify({'sentence': 'にゃんぱすー'})
+    if not get_tweets():
+        fetch_timeline_tweets()
     sentence_1, sentence_2 = make_sentences()
     return jsonify({'sentence': sentence_1})
     
