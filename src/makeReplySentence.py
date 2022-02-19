@@ -29,6 +29,9 @@ def make_reply_sentence(status):
     screen_name = status.user.screen_name
     text = normalize_text(status.text)
     text = text.replace(",", "").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("?", "？").replace("!", "！").replace("，", "、").replace("．", "。").replace('@nyanpassnanon', "")
+    # にゃんぱすー
+    if "にゃんぱす" in text:
+        return "@{} にゃんぱすー".format(screen_name)
     # 占い
     if re.compile(r"(?:(?:うらな|占)って|おみくじ)").search(text):
         return omikuji(screen_name)
