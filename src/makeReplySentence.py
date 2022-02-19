@@ -36,6 +36,9 @@ def make_reply_sentence(status):
     if re.compile(r"(?:[ぐぱグパ]ー|ちょき|チョキ)").search(text):
         return janken(screen_name, text)
     if text:
+         # 10%の確率で「にゃんぱすー」を返す
+        if np.random.randint(1,91) == 1:
+            return "@{} にゃんぱすー".format(screen_name)
         if not get_tweets():
             fetch_timeline_tweets()
         sentence_1, sentence_2 = make_sentences() 
