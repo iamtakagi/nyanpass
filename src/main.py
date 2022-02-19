@@ -8,6 +8,7 @@ from twitterAuth import auth
 from flask_cors import CORS
 from flask import Flask, jsonify
 import os
+import numpy as np
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -32,6 +33,9 @@ CORS(app)
 async def make_sentence():
     if not get_tweets():
         fetch_timeline_tweets()
+    # 10%の確率で「にゃんぱすー」を返す
+    if np.random.randint(1,91) == 1:
+        return jsonify({'sentence': 'にゃんぱすー'})
     sentence_1, sentence_2 = make_sentences()
     return jsonify({'sentence': sentence_1})
     
