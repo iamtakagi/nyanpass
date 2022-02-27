@@ -606,5 +606,17 @@
     {
         "gokan": "こまちゃんは",
         "gobi": "飲んだことあるん？"
+    },
+    {
+        "gokan": "今日はAmazon Prime Videoで",
+        "gobi": "見るん！"
+    },
+    {
+        "gokan": "今日はNetflixで",
+        "gobi": "見るん！"
+    },
+    {
+        "gokan": "今日はニコ生で",
+        "gobi": "見るん！"
     }
 ]
