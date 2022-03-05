@@ -7,4 +7,3 @@ requests
 flask
 flask_cors
 tweepy==3.10.0
-uvicorn
