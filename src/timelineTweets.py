@@ -11,7 +11,7 @@ def fetch_timeline_tweets():
             current.truncate(0)
             current.close()
     with open(dest, mode = "w") as file:
-        tweets = [s.text for s in api.home_timeline(count = 00) if not s.user.screen_name == os.environ["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text and "http" not in s.text]
+        tweets = [s.text for s in api.home_timeline(count = 100) if not s.user.screen_name == os.environ["SCREEN_NAME"] and not s.retweeted and 'RT @' not in s.text and "http" not in s.text]
         file.write(json.dumps(tweets))
 
 def get_tweets():
