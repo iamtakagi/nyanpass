@@ -9,3 +9,6 @@ Randomly select a noun from the tweets in the TL and tweet it quote a line from 
 
 ## Contribution
 Welcome, Issues or Pull requests.
+
+## LICENSE
+undecided yet.
