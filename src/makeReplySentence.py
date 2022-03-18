@@ -44,7 +44,7 @@ def make_reply_sentence(status):
     if "にゃんぱす" in text:
         return "@{} にゃんぱすー".format(screen_name)
     # 占い
-    if re.compile(r"(?:(?:うらな|占)って|おみくじ)").search(text):
+    if re.compile(r"(?:うらな(?:って|い)|占(?:って|い)|おみくじ|運勢?)").search(text):
         if not get_tweets():
             fetch_timeline_tweets()
         return omikuji(screen_name)
