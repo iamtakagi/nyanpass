@@ -1,6 +1,7 @@
 import random
 import MeCab
 import numpy as np
+from choiceRandomNoun import choiceRandomNoun
 
 from makeSentences import make_sentences
 from timelineTweets import get_tweets, fetch_timeline_tweets
@@ -18,7 +19,7 @@ import re
 凶=10% (0.1)
 """
 def omikuji(screen_name):
-    return "@{} {}なん！".format(screen_name, np.random.choice(["大吉", "中吉", "小吉", "吉", "末吉", "凶"], p=[0.01, 0.09, 0.1, 0.6, 0.1, 0.1]))
+    return "@{} {}なん！ラッキーワードは「{}」なのん！".format(screen_name, np.random.choice(["大吉", "中吉", "小吉", "吉", "末吉", "凶"], p=[0.01, 0.09, 0.1, 0.6, 0.1, 0.1]), choiceRandomNoun())
 
 def janken(screen_name, text):
     result = random.choice(("グー", "チョキ", "パー"))
@@ -44,6 +45,8 @@ def make_reply_sentence(status):
         return "@{} にゃんぱすー".format(screen_name)
     # 占い
     if re.compile(r"(?:(?:うらな|占)って|おみくじ)").search(text):
+        if not get_tweets():
+            fetch_timeline_tweets()
         return omikuji(screen_name)
     # じゃんけん
     if re.compile(r"(?:[✊✋✌👊]|[ぐぱグパ]ー|ちょき|チョキ)").search(text):
