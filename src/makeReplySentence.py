@@ -23,7 +23,7 @@ def omikuji(screen_name):
 
 def janken(screen_name, text):
     result = random.choice(("グー✊", "チョキ✌", "パー✋"))
-    text = text.replace("ぐー", "グー").replace("ちょき", "チョキ").replace("ぱー", "パー").replace("✊", "グー").replace("👊", "グー").replace("✌", "チョキ").replace("✋", "パー")
+    text = text.replace("ぐー", "グー✊").replace("ちょき", "チョキ✌").replace("ぱー", "パー✋").replace("✊", "グー✊").replace("👊", "グー✊").replace("✌", "チョキ✌").replace("✋", "パー✋")
     janken = ""
     # あいこ
     if result in text: 
