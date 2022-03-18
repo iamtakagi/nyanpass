@@ -22,7 +22,7 @@ def omikuji(screen_name):
     return "@{} {}なん！ラッキーワードは「{}」なのん！".format(screen_name, np.random.choice(["大吉", "中吉", "小吉", "吉", "末吉", "凶"], p=[0.01, 0.09, 0.1, 0.6, 0.1, 0.1]), choiceRandomNoun())
 
 def janken(screen_name, text):
-    result = random.choice(("グー", "チョキ", "パー"))
+    result = random.choice(("グー✊", "チョキ✌", "パー✋"))
     text = text.replace("ぐー", "グー").replace("ちょき", "チョキ").replace("ぱー", "パー").replace("✊", "グー").replace("👊", "グー").replace("✌", "チョキ").replace("✋", "パー")
     janken = ""
     # あいこ
