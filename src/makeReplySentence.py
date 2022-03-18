@@ -29,10 +29,10 @@ def janken(screen_name, text):
     if result in text: 
         janken = "@{} {}なん！あいこなん！".format(screen_name, result)
     # 勝ちパターン
-    if result == "グー" and "チョキ" in text or result == "チョキ" and "パー" in text or result == "パー" and "グー" in text:
+    if result == "グー✊" and "チョキ" in text or result == "チョキ✌" and "パー" in text or result == "パー✋" and "グー" in text:
         janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
     # 負けパターン
-    if result == "グー" and "パー" in text or result == "チョキ" and "グー" in text or result == "パー" and "チョキ" in text:
+    if result == "グー✊" and "パー" in text or result == "チョキ✌" and "グー" in text or result == "パー✋" and "チョキ" in text:
         janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
     return janken
 
