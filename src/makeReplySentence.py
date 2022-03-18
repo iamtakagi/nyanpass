@@ -7,8 +7,18 @@ from timelineTweets import get_tweets, fetch_timeline_tweets
 from filters import normalize_text
 import re
 
+
+"""
+おみくじ 確率
+大吉=1% (0.01)
+中吉=9% (0.09)
+小吉=10% (0.1)
+吉=60% (0.6)
+凶=10% (0.1)
+"""
 def omikuji(screen_name):
-    return "@{} {}なん！".format(screen_name, random.choice(("大吉", "中吉", "小吉", "吉", "半吉", "末吉", "末小吉", "凶", "小凶", "半凶", "末凶", "大凶")))
+    return "@{} {}なん！".format(screen_name, np.random.choice(["大吉", "中吉", "小吉", "吉", "凶"], 
+    p=[0.01, 0.09, 0.1, 0.6, 0.1]))
 
 def janken(screen_name, text):
     result = random.choice(("グー", "チョキ", "パー"))
