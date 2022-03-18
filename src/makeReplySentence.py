@@ -14,11 +14,11 @@ import re
 中吉=9% (0.09)
 小吉=10% (0.1)
 吉=60% (0.6)
-凶=6% (0.06)
+末吉=10% (0.1)
+凶=10% (0.1)
 """
 def omikuji(screen_name):
-    return "@{} {}なん！".format(screen_name, np.random.choice(["大吉", "中吉", "小吉", "吉", "凶"], 
-    p=[0.01, 0.09, 0.1, 0.6, 0.06]))
+    return "@{} {}なん！".format(screen_name, np.random.choice(["大吉", "中吉", "小吉", "吉", "末吉", "凶"], p=[0.01, 0.09, 0.1, 0.6, 0.1, 0.1]))
 
 def janken(screen_name, text):
     result = random.choice(("グー", "チョキ", "パー"))
