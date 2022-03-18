@@ -36,7 +36,7 @@ def make_reply_sentence(status):
     if re.compile(r"(?:(?:うらな|占)って|おみくじ)").search(text):
         return omikuji(screen_name)
     # じゃんけん
-    if re.compile(r"(?:[ぐぱグパ]ー|ちょき|チョキ)").search(text):
+    if re.compile(r"(?:[✊✋✌👊]|[ぐぱグパ]ー|ちょき|チョキ)").search(text):
         return janken(screen_name, text)
     if text:
          # 10%の確率で「にゃんぱすー」を返す
