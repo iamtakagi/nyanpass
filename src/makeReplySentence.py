@@ -22,17 +22,17 @@ def omikuji(screen_name):
     return "@{} {}なん！ラッキーワードは「{}」なのん！".format(screen_name, np.random.choice(["大吉", "中吉", "小吉", "吉", "末吉", "凶"], p=[0.01, 0.09, 0.1, 0.6, 0.1, 0.1]), choiceRandomNoun())
 
 def janken(screen_name, text):
-    result = random.choice(("グー✊", "チョキ✌", "パー✋"))
-    text = text.replace("ぐー", "グー✊").replace("ちょき", "チョキ✌").replace("ぱー", "パー✋").replace("✊", "グー✊").replace("👊", "グー✊").replace("✌", "チョキ✌").replace("✋", "パー✋")
+    result = random.choice(("グー✊", "チョキ✌", "パー🖐"))
+    text = text.replace("ぐー", "グー✊").replace("ちょき", "チョキ✌").replace("ぱー", "パー🖐").replace("✊", "グー✊").replace("👊", "グー✊").replace("✌", "チョキ✌").replace("✋", "パー🖐").replace("🖐", "パー🖐")
     janken = ""
     # あいこ
     if result in text: 
         janken = "@{} {}なん！あいこなん！".format(screen_name, result)
     # 勝ちパターン
-    if result == "グー✊" and "チョキ" in text or result == "チョキ✌" and "パー" in text or result == "パー✋" and "グー" in text:
+    if result == "グー✊" and "チョキ✌" in text or result == "チョキ✌" and "パー🖐" in text or result == "パー🖐" and "グー✊" in text:
         janken = "@{} {}なん！うちの勝ちなん！".format(screen_name, result)
     # 負けパターン
-    if result == "グー✊" and "パー" in text or result == "チョキ✌" and "グー" in text or result == "パー✋" and "チョキ" in text:
+    if result == "グー✊" and "パー🖐" in text or result == "チョキ✌" and "グー✊" in text or result == "パー🖐" and "チョキ✌" in text:
         janken = "@{} {}なん！うちの負けなん！".format(screen_name, result)
     return janken
 
