@@ -1,4 +1,5 @@
 from tweepy import Stream, StreamListener
+import urllib
 from makeReplySentence import make_reply_sentence
 from twitterApi import api
 
@@ -12,8 +13,7 @@ class ReplyStreamListener(StreamListener):
             pass
             print("This tweet contains reply to @nyanpassnanon, skipped.")
         else:
-            api.update_status(reply_msg, in_reply_to_status_id=status.id)
-            print("Sent tweet: {}".format(reply_msg))
+            api.update_status('@{} {}\n{}'.format(status.user.screen_name, reply_msg, urllib.parse.quote(reply_msg)), in_reply_to_status_id=status.id)
         return True
 
     def on_error(self, status_code):
