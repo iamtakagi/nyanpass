@@ -13,10 +13,10 @@ def tweet():
         nyanpass_link = f'https://twitter.com/nyanpassnanon/status/{nyanpass_status.id}'
         send(nyanpass_link)
     sentence_1, sentence_2 = make_sentences()
-    tweet_result_1 = api.update_status(status = sentence_1)
-    tweet_result_2 = api.update_status(status = sentence_2)
-    status_link_1 = f'https://twitter.com/nyanpassnanon/status/{tweet_result_1.id}'
-    status_link_2 = f'https://twitter.com/nyanpassnanon/status/{tweet_result_2.id}'
+    tweet_result_1 = api.update_status(status = '{}\nhttps://renchon.chat?sentence={}'.format(sentence_1, sentence_1))
+    tweet_result_2 = api.update_status(status = '{}\nhttps://renchon.chat?sentence={}'.format(sentence_2, sentence_2))
+    status_link_1 = 'https://twitter.com/nyanpassnanon/status/{}'.format(tweet_result_1.id)
+    status_link_2 = 'https://twitter.com/nyanpassnanon/status/{}'.format(tweet_result_2.id)
     send(status_link_1)
     send(status_link_2)
 
