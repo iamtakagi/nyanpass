@@ -13,7 +13,7 @@ class ReplyStreamListener(StreamListener):
             pass
             print("This tweet contains reply to @nyanpassnanon, skipped.")
         else:
-            api.update_status('@{} {}\n{}'.format(status.user.screen_name, reply_msg, urllib.parse.quote(reply_msg)), in_reply_to_status_id=status.id)
+            api.update_status('@{} {}\nhttps://renchon.chat?sentence={}'.format(status.user.screen_name, reply_msg, urllib.parse.quote(reply_msg)), in_reply_to_status_id=status.id)
         return True
 
     def on_error(self, status_code):
