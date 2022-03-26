@@ -18,7 +18,7 @@ import re
 末吉=10% (0.1)
 凶=10% (0.1)
 """
-def omikuji(e):
+def omikuji():
     return "{}なん！ラッキーワードは「{}」なのん！".format(np.random.choice(["大吉", "中吉", "小吉", "吉", "末吉", "凶"], p=[0.01, 0.09, 0.1, 0.6, 0.1, 0.1]), choiceRandomNoun())
 
 def janken(text):
