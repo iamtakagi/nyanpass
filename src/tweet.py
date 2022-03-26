@@ -14,8 +14,8 @@ def tweet():
         nyanpass_link = f'https://twitter.com/nyanpassnanon/status/{nyanpass_status.id}'
         send(nyanpass_link)
     sentence_1, sentence_2 = make_sentences()
-    tweet_result_1 = api.update_status(status = '{}\nhttps://renchon.chat?sentence={}'.format(sentence_1, urllib.parse.quote(sentence_1)))
-    tweet_result_2 = api.update_status(status = '{}\nhttps://renchon.chat?sentence={}'.format(sentence_2, urllib.parse.quote(sentence_2)))
+    tweet_result_1 = api.update_status(status = sentence_1)
+    tweet_result_2 = api.update_status(status = sentence_2)
     status_link_1 = 'https://twitter.com/nyanpassnanon/status/{}'.format(tweet_result_1.id)
     status_link_2 = 'https://twitter.com/nyanpassnanon/status/{}'.format(tweet_result_2.id)
     send(status_link_1)
