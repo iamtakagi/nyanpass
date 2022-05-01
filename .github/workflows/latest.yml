@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_BASE_NAME: ghcr.io/rechon-chat/bot
+  DOCKER_BASE_NAME: ghcr.io/renchon-chat/bot
 
 jobs:
   build:
