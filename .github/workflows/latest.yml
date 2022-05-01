@@ -1,9 +1,10 @@
 name: Build and Push Image
 
 on:
-  create:
-    tags:
-      - '*'
+  push:
+    paths-ignore:
+      - '*.md'
+      - 'LICENSE'
 
   workflow_dispatch:
 
@@ -27,7 +28,7 @@ jobs:
         with:
           registry: ${{ env.DOCKER_REGISTRY_NAME }}
           username: ${{ github.repository_owner }}
-          password: ${{ github.token }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
