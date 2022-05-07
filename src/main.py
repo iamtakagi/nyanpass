@@ -6,7 +6,7 @@ from Tweet import Tweet
 
 
 # ログの設定
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 # BlockingScheduler を初期化
 scheduler = BlockingScheduler(daemon=True)

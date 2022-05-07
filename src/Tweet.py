@@ -1,14 +1,14 @@
 
+import logging
+
+from DiscordWebhook import SendDiscord
 from MakeSentences import MakeSentences
 from TimelineTweets import GatherTimelineTweets
 from TwitterAPI import twitter_api
-from DiscordWebhook import SendDiscord
 
 
 def Tweet():
     """ ツイートを送信する """
-
-    print('Tweet Started.')
 
     # Twitter のタイムラインからツイートを取得して貯めておく
     GatherTimelineTweets()
@@ -21,8 +21,8 @@ def Tweet():
     tweet_result_2 = twitter_api.update_status(status = sentence_2)
     status_link_1 = f'https://twitter.com/{tweet_result_1.user.screen_name}/status/{tweet_result_1.id}'
     status_link_2 = f'https://twitter.com/{tweet_result_1.user.screen_name}/status/{tweet_result_2.id}'
-    print(f'Tweet: {status_link_1}')
-    print(f'Tweet: {status_link_2}')
+    logging.info(f'Tweet: {status_link_1}')
+    logging.info(f'Tweet: {status_link_2}')
 
     # Discord に通知
     SendDiscord(status_link_1)

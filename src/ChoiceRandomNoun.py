@@ -31,9 +31,6 @@ def ChoiceRandomNoun() -> str:
              .replace('，', '、') \
              .replace('．', '。') + ','
 
-    # ツイートリストを出力
-    logging.debug(tweets)
-
     # 名詞を格納するリスト
     nouns = []
 
@@ -43,7 +40,6 @@ def ChoiceRandomNoun() -> str:
 
         # 形態素出力
         parsed: str = mecab.parse(tweet)
-        logging.debug(parsed)
 
         # 全ての文章から固有名詞だけを取り出す
         for n in [line for line in parsed.splitlines() if '固有名詞' in line.split()[-1]]:
