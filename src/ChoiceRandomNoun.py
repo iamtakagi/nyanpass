@@ -3,7 +3,7 @@ import logging
 import MeCab
 import numpy as np
 
-from TweetFilters import FilterBannedWords, FilterLinkAndReplies
+from TweetFilters import FilterBannedWords
 from TimelineTweets import GetTimelineTweets
 
 
@@ -19,7 +19,7 @@ def ChoiceRandomNoun() -> str:
     mecab = MeCab.Tagger('-d /usr/lib/mecab/dic/mecab-ipadic-neologd -Ochasen')
 
     # ツイートを取得
-    tweets = FilterLinkAndReplies(GetTimelineTweets())
+    tweets = GetTimelineTweets()
 
     # フィルターを掛ける
     for tweet in tweets:

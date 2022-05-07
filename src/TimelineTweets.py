@@ -3,6 +3,7 @@ import json
 import os
 from typing import List
 
+from TweetFilters import FormatTweetText
 from TwitterAPI import twitter_api
 
 
@@ -15,26 +16,27 @@ def GatherTimelineTweets():
 
     # 書き込みモード (w) で開く
     # 開いた時点で既存のファイルの内容はクリアされる
-    with open(dest_file, mode="w", encoding='utf-8') as file:
+    with open(dest_file, mode='w', encoding='utf-8') as file:
 
         # タイムラインからツイートを収集
         # tweet_mode='extended' を指定しないと一部のツイートが140文字ちょうどで切り詰められる
         # ref: https://docs.tweepy.org/en/stable/extended_tweets.html
         tweets = []
-        for tweet in twitter_api.home_timeline(count=100, tweet_mode='extended'):
+        for tweet in twitter_api.home_timeline(count=200, tweet_mode='extended'):
 
             # スクリーンネームが Bot と同じツイートを除外
             if tweet.user.screen_name == os.environ['SCREEN_NAME']:
                 continue
 
-            # リツイートされたツイートを除外
-            if tweet.retweeted is True or 'RT @' in tweet.full_text:
-                continue
+            # # リツイートされたツイートを除外
+            # if tweet.retweeted is True or 'RT @' in tweet.full_text:
+            #     continue
 
-            # ツイート本文のみを追加
-            tweets.append(tweet.full_text)
+            # ツイート本文のみをフィルタリングしてから追加
+            tweets.append(FormatTweetText(tweet.full_text))
 
-        file.write(json.dumps(tweets))
+        # ensure_ascii を False にして JSON を読みやすく
+        file.write(json.dumps(tweets, ensure_ascii=False, indent=4))
 
 
 def GetTimelineTweets() -> List[str]:
@@ -52,3 +54,8 @@ def GetTimelineTweets() -> List[str]:
     # JSON を読み込んでそのまま返す
     with open(dest_file, encoding='utf-8') as file:
         return json.load(file)
+
+
+# 直接実行されたときにタイムラインからツイートを取得する（ツイートはしない）
+if __name__ == '__main__':
+    GatherTimelineTweets()
