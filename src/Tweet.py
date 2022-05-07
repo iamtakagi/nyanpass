@@ -17,10 +17,12 @@ def Tweet():
     # ツイートを送信
     tweet_result_1 = twitter_api.update_status(status = sentence_1)
     tweet_result_2 = twitter_api.update_status(status = sentence_2)
-
-    # Discord に通知
     status_link_1 = f'https://twitter.com/{tweet_result_1.user.screen_name}/status/{tweet_result_1.id}'
     status_link_2 = f'https://twitter.com/{tweet_result_1.user.screen_name}/status/{tweet_result_2.id}'
+    print(f'Tweet: {status_link_1}')
+    print(f'Tweet: {status_link_2}')
+
+    # Discord に通知
     SendDiscord(status_link_1)
     SendDiscord(status_link_2)
 
