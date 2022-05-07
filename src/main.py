@@ -1,20 +1,21 @@
 
 import logging
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 from Tweet import Tweet
 
 
-# ロギング
+# ログの設定
 logging.basicConfig(level=logging.DEBUG)
 
-# BackgroundScheduler を初期化
-sched = BackgroundScheduler(daemon=True)
+# BlockingScheduler を初期化
+scheduler = BlockingScheduler(daemon=True)
 
 # 10分間隔でツイート
-@sched.scheduled_job('cron', id='tweet', minute='*/10')
+@scheduler.scheduled_job('cron', id='tweet', minute='*/10')
 def cron_tweet():
     Tweet()
 
 # スケジューリングを開始
-sched.start()
+# BlockingScheduler なのでここでずっとブロッキングされる
+scheduler.start()

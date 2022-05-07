@@ -8,6 +8,8 @@ from DiscordWebhook import SendDiscord
 def Tweet():
     """ ツイートを送信する """
 
+    print('Tweet Started.')
+
     # Twitter のタイムラインからツイートを取得して貯めておく
     GatherTimelineTweets()
 
