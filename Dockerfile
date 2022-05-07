@@ -1,7 +1,9 @@
 
 FROM python:3.10.4-slim
 
-RUN apt-get update
+ENV TZ=Asia/Tokyo
+
+RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y curl file git make mecab libmecab-dev mecab-ipadic-utf8 swig xz-utils
 RUN git clone --depth=1 https://github.com/neologd/mecab-ipadic-neologd
 RUN cd ./mecab-ipadic-neologd && ./bin/install-mecab-ipadic-neologd -y -p /var/lib/mecab/dic/mecab-ipadic-neologd

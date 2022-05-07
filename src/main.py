@@ -11,8 +11,8 @@ logging.basicConfig(level=logging.DEBUG)
 # BackgroundScheduler を初期化
 sched = BackgroundScheduler(daemon=True)
 
-# 15分間隔でツイート
-@sched.scheduled_job('cron', id='tweet', minute='*/15')
+# 10分間隔でツイート
+@sched.scheduled_job('cron', id='tweet', minute='*/10')
 def cron_tweet():
     Tweet()
 
