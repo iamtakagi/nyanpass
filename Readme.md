@@ -1,5 +1,5 @@
 
-# AnyaBot
+# anyabot (@anyawordbot)
 
 ## License
 MIT License

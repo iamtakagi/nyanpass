@@ -3,7 +3,7 @@ version: '3.8'
 services:
     app:
         image: anyabot
-        container_name: AnyaBot
+        container_name: anyabot
         restart: always
         build:
             context: .
