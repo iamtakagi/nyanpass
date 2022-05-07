@@ -131,3 +131,4 @@ dmypy.json
 # End of https://www.gitignore.io/api/python
 
 .vscode
+data/timeline_tweets.json

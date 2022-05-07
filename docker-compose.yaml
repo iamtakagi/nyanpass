@@ -1,0 +1,15 @@
+
+version: '3.8'
+services:
+    app:
+        image: anyabot
+        container_name: AnyaBot
+        restart: always
+        build:
+            context: .
+        env_file:
+            - .env
+        volumes:
+            - type: bind
+              source: './data/'
+              target: '/app/data/'
