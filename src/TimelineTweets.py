@@ -22,7 +22,7 @@ def GatherTimelineTweets():
         # tweet_mode='extended' を指定しないと一部のツイートが140文字ちょうどで切り詰められる
         # ref: https://docs.tweepy.org/en/stable/extended_tweets.html
         tweets = []
-        for tweet in twitter_api.home_timeline(count=200, tweet_mode='extended'):
+        for tweet in twitter_api.home_timeline(count=100, tweet_mode='extended'):
 
             # スクリーンネームが Bot と同じツイートを除外
             if tweet.user.screen_name == os.environ['SCREEN_NAME']:
@@ -32,8 +32,12 @@ def GatherTimelineTweets():
             # if tweet.retweeted is True or 'RT @' in tweet.full_text:
             #     continue
 
-            # ツイート本文のみをフィルタリングしてから追加
-            tweets.append(FormatTweetText(tweet.full_text))
+            # ツイート本文のみをフィルタリング
+            tweet_text = FormatTweetText(tweet.full_text)
+            if tweet_text == '':
+                continue
+
+            tweets.append(tweet_text)
 
         # ensure_ascii を False にして JSON を読みやすく
         file.write(json.dumps(tweets, ensure_ascii=False, indent=4))
