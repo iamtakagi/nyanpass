@@ -49,6 +49,21 @@ def FormatTweetText(tweet: str) -> str:
     return tweet
 
 
+def NormalizeTweetText(tweet: str) -> str:
+    """
+    ツイートの本文から記号を除去する
+
+    Args:
+        text (str): ツイートの本文
+
+    Returns:
+        str: 記号を除去したツイートの本文
+    """
+
+    blacklist = '[ @\|/:%\$&?\(\)~\.=\+\-_「」（）／　：・”“]+'
+    return re.sub(blacklist, '', tweet)
+
+
 def FilterBannedWords(word: str) -> str:
     """
     禁止対象のワードをフィルタリングして返す
