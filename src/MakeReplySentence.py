@@ -30,7 +30,7 @@ def Omikuji() -> str:
     # おみくじの結果を生成
     choice = np.random.choice(['大吉', '中吉', '小吉', '吉', '末吉', '凶'], p=[0.01, 0.09, 0.1, 0.6, 0.1, 0.1])
 
-    return f'アーニャ {choice}引いた！ {ChoiceRandomNoun()}がラッキーワードます！'
+    return f'アーニャ {choice}引いた！ {ChoiceRandomNoun()}がラッキーワード！ ワクワク！'
 
 
 def Janken(tweet: str) -> str:
@@ -51,6 +51,9 @@ def Janken(tweet: str) -> str:
     tweet = tweet.replace('ぐー', 'グー✊') \
                  .replace('ちょき', 'チョキ✌') \
                  .replace('ぱー', 'パー🖐') \
+                 .replace('グー', 'グー✊') \
+                 .replace('チョキ', 'チョキ✌') \
+                 .replace('パー', 'パー🖐') \
                  .replace('✊', 'グー✊') \
                  .replace('👊', 'グー✊') \
                  .replace('✌', 'チョキ✌') \
@@ -67,13 +70,13 @@ def Janken(tweet: str) -> str:
     if (result == 'グー✊' and 'チョキ✌' in tweet) or \
        (result == 'チョキ✌' and 'パー🖐' in tweet) or \
        (result == 'パー🖐' and 'グー✊' in tweet):
-        janken = f'アーニャ {result}だした！\nアーニャのかち！ ﾜｸﾜｸ！'
+        janken = f'アーニャ {result}だした！\nアーニャのかち！ ワクワク！'
 
     # 負けパターン
     if (result == 'グー✊' and 'パー🖐' in tweet) or \
        (result == 'チョキ✌' and 'グー✊' in tweet) or \
        (result == 'パー🖐' and 'チョキ✌' in tweet):
-        janken = f'アーニャ {result}だした！\nアーニャのまけ…'
+        janken = f'アーニャ {result}だした！\nアーニャのまけ… しょんぼり'
 
     return janken
 

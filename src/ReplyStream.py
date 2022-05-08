@@ -32,7 +32,7 @@ class ReplyStream(tweepy.Stream):
             tweet = status.extended_tweet['full_text']
         else:
             tweet = status.text
-        logging.info(f'[Info] Retrieved tweet: {tweet}')
+        logging.info(f'Retrieved Tweet: {tweet}')
 
         # リプライ用の文章を生成
         reply_sentence = MakeReplySentence(tweet)
@@ -44,7 +44,8 @@ class ReplyStream(tweepy.Stream):
         # リプライを実行
         tweet_result = twitter_api.update_status(f'@{status.user.screen_name} {reply_sentence}', in_reply_to_status_id=status.id)
         status_link = f'https://twitter.com/{tweet_result.user.screen_name}/status/{tweet_result.id}'
-        logging.info(f'Reply: {reply_sentence} ({status_link})')
+        line_break = '\n'  # f-string ではバックスラッシュが使えないので苦肉の策
+        logging.info(f'Reply Tweet: {reply_sentence.replace(line_break, " ")} ({status_link})')
 
 
     def on_error(self, status_code: int) -> bool:
@@ -58,9 +59,5 @@ class ReplyStream(tweepy.Stream):
             bool: 常に False を返す
         """
 
-        if status_code == 420:
-            logging.error('[Error] 420')
-            return False
-        else:
-            logging.error(f'[Error] {status_code}')
-            return False
+        logging.error(f'Error Occurred. Status Code: {status_code}')
+        return False

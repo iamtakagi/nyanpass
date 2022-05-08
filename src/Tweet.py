@@ -22,8 +22,9 @@ def Tweet():
     tweet_result_2 = twitter_api.update_status(status=sentence_2)
     status_link_1 = f'https://twitter.com/{tweet_result_1.user.screen_name}/status/{tweet_result_1.id}'
     status_link_2 = f'https://twitter.com/{tweet_result_1.user.screen_name}/status/{tweet_result_2.id}'
-    logging.info(f'Tweet: {sentence_1} ({status_link_1})')
-    logging.info(f'Tweet: {sentence_2} ({status_link_2})')
+    line_break = '\n'  # f-string ではバックスラッシュが使えないので苦肉の策
+    logging.info(f'Tweet: {sentence_1.replace(line_break, " ")} ({status_link_1})')
+    logging.info(f'Tweet: {sentence_2.replace(line_break, " ")} ({status_link_2})')
 
     # Discord に通知
     SendDiscord(status_link_1)
