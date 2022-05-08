@@ -5,7 +5,6 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 from ReplyStream import ReplyStream
 from Tweet import Tweet
-from TwitterAPI import twitter_auth
 
 
 # ログの設定
@@ -22,7 +21,10 @@ def cron_tweet():
 # 1分間隔でリプライを返す
 @scheduler.scheduled_job('interval', id='reply_stream', seconds=60)
 def reply_stream():
-    stream = ReplyStream(auth=twitter_auth, tweet_mode='extended')
+    stream = ReplyStream(
+        os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
+        os.environ['TWITTER_AT'], os.environ['TWITTER_ATS'],
+    )
     stream.filter(track=[f'@{os.environ["SCREEN_NAME"]}'])
 
 # スケジューリングを開始
