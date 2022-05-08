@@ -30,7 +30,7 @@ def Omikuji() -> str:
     # おみくじの結果を生成
     choice = np.random.choice(['大吉', '中吉', '小吉', '吉', '末吉', '凶'], p=[0.01, 0.09, 0.1, 0.6, 0.1, 0.1])
 
-    return f'アーニャ {choice}引いた！ {ChoiceRandomNoun()}がラッキーワード！ ワクワク！'
+    return f'アーニャ {choice}引いた！「{ChoiceRandomNoun()}」がラッキーワード！ ワクワク！'
 
 
 def Janken(tweet: str) -> str:
