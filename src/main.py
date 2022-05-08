@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 sched = BackgroundScheduler(daemon=True)
 
-@sched.scheduled_job('cron', id='tweet', minute='*/15')
+@sched.scheduled_job('cron', id='tweet', minute='*/10')
 def cron_tweet():
     tweet()
 
