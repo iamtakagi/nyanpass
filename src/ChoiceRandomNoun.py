@@ -1,5 +1,4 @@
 
-import logging
 import MeCab
 import numpy as np
 
@@ -49,5 +48,12 @@ def ChoiceRandomNoun() -> str:
                 # 名詞を格納
                 nouns.append(noun)
 
-    # 禁止対象のワードをフィルタリングしてから返す
-    return FilterBannedWords(np.random.choice(nouns))
+    # ランダムに名詞を取得
+    # 同時に禁止対象のワードをフィルタリングする
+    noun = FilterBannedWords(np.random.choice(nouns))
+
+    # 取得した名詞が1文字だけだった場合、大抵意味が通らないのでもう一度取得し直す
+    while len(noun) == 1:
+        noun = FilterBannedWords(np.random.choice(nouns))
+
+    return noun
