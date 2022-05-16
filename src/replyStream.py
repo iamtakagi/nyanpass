@@ -1,5 +1,6 @@
 from tweepy import Stream, StreamListener
 import urllib
+from discordWebhook import post_discord_webhook
 from makeReplySentence import make_reply_sentence
 from twitterApi import api
 
@@ -13,7 +14,9 @@ class ReplyStreamListener(StreamListener):
             pass
             print("This tweet contains reply to @nyanpassnanon, skipped.")
         else:
-            api.update_status('@{} {}'.format(status.user.screen_name, reply_msg), in_reply_to_status_id=status.id)
+            result = api.update_status('@{} {}'.format(status.user.screen_name, reply_msg), in_reply_to_status_id=status.id)
+            tweet_link = 'https://twitter.com/nyanpassnanon/status/{}'.format(result.id)
+            post_discord_webhook(tweet_link)
         return True
 
     def on_error(self, status_code):

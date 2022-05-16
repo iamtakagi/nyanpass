@@ -1,7 +1,7 @@
 import requests, json
 import os
 
-def send(text):
+def post_discord_webhook(text):
     main_content = {'content': text}
     headers = {'Content-Type': 'application/json'}
-    response = requests.post(os.environ["DISCORD_WEBHOOK_URL"], json.dumps(main_content), headers=headers)
+    requests.post(os.environ["DISCORD_WEBHOOK_URL"], json.dumps(main_content), headers=headers)
