@@ -12,7 +12,7 @@ class ReplyStream(tweepy.Stream):
     def on_status(self, status: Dict[str, Any]):
         print("[Info] Retrieved tweet: ", status.text)
         status_link = f'https://twitter.com/{status.user.screen_name}/status/{status.id}'
-        post_discord_webhook(status_link)
+        post_discord_webhook(status_link, status.user.profile_image_url_https)
         reply_msg = make_reply_sentence(status)
         if reply_msg == None: pass
         if f'@{os.environ["SCREEN_NAME"]}' in reply_msg:
