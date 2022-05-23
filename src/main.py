@@ -41,9 +41,10 @@ stream.filter(track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
 
 sched.start()
 
-app.run (
-    threaded=True,
-    host = os.environ["HOST"], 
-    port = os.environ["PORT"], 
-    debug=False
-)
+if __name__ == "__main__":
+    app.run (
+        threaded=True,
+        host = os.environ["HOST"], 
+        port = os.environ["PORT"], 
+        debug=False
+    )
