@@ -19,13 +19,6 @@ def cron_tweet():
     tweet()
 
 
-@sched.scheduled_job('interval', id='reply_stream', seconds=60)
-def reply_stream():
-    listener = ReplyStreamListener()
-    stream = ReplyStream(auth, listener)
-    stream.start()
-
-sched.start()
 app = Flask(__name__)
 CORS(app)
 
@@ -40,9 +33,15 @@ def make_sentence():
     return jsonify({'sentence': sentence_1})
     
 
+listener = ReplyStreamListener()
+stream = ReplyStream(auth, listener)
+stream.start()
+
 app.run (
     threaded=True,
     host = os.environ["HOST"], 
     port = os.environ["PORT"], 
     debug=False
 )
+
+sched.start()
