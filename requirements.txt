@@ -6,4 +6,4 @@ apscheduler
 requests
 flask
 flask_cors
-tweepy
+tweepy==4.10.0
