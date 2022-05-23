@@ -29,6 +29,10 @@ def MakeSentence() -> str:
     if NormalizeTweetText(noun) == '':
         noun = ChoiceRandomNoun()
 
+    # 名詞に数字しか含まれていなかったら再取得
+    if noun.isdecimal() is True:
+        noun = ChoiceRandomNoun()
+
     # テンプレートとランダムな名詞を組み合わせて文章を生成
     sentence = template['gokan'] + noun + template['gobi']
 
