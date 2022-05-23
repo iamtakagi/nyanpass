@@ -1,3 +1,4 @@
+import os
 from typing import Any, Dict
 import tweepy
 import logging
@@ -10,16 +11,16 @@ class ReplyStream(tweepy.Stream):
 
     def on_status(self, status: Dict[str, Any]):
         print("[Info] Retrieved tweet: ", status.text)
-        status_link = 'https://twitter.com/{}/status/{}'.format(status.user.screen_name, status.id)
+        status_link = f'https://twitter.com/{status.user.screen_name}/status/{status.id}'
         post_discord_webhook(status_link)
         reply_msg = make_reply_sentence(status)
         if reply_msg == None: pass
-        if "@nyanpassnanon" in reply_msg:
+        if f'@{os.environ["SCREEN_NAME"]}' in reply_msg:
             pass
-            print("This tweet contains reply to @nyanpassnanon, skipped.")
+            print(f'This tweet contains reply to @{os.environ["SCREEN_NAME"]}, skipped.')
         else:
             reply_result = api.update_status('@{} {}'.format(status.user.screen_name, reply_msg), in_reply_to_status_id=status.id)
-            reply_link = 'https://twitter.com/nyanpassnanon/status/{}'.format(reply_result.id)
+            reply_link = f'https://twitter.com/{os.environ["SCREEN_NAME"]}/status/{reply_result.id}'
             post_discord_webhook(reply_link)
         return True
 
