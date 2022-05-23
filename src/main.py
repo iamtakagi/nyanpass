@@ -3,7 +3,7 @@ from makeSentences import make_sentences
 from timelineTweets import fetch_timeline_tweets, get_tweets
 from tweet import tweet
 import logging
-from replyStream import ReplyStreamListener, ReplyStream
+from replyStream import ReplyStream
 from twitterAuth import auth
 from flask_cors import CORS
 from flask import Flask, jsonify
@@ -33,9 +33,11 @@ def make_sentence():
     return jsonify({'sentence': sentence_1})
     
 
-listener = ReplyStreamListener()
-stream = ReplyStream(auth, listener)
-stream.start()
+stream = ReplyStream(
+    os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
+    os.environ['TWITTER_AT'], os.environ['TWITTER_ATS'],
+)
+stream.filter(track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
 
 app.run (
     threaded=True,

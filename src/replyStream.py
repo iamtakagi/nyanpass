@@ -1,12 +1,14 @@
-from tweepy import Stream, StreamListener
+from typing import Any, Dict
+import tweepy
+import logging
 import urllib
 from discordWebhook import post_discord_webhook
 from makeReplySentence import make_reply_sentence
 from twitterApi import api
 
-class ReplyStreamListener(StreamListener):
+class ReplyStream(tweepy.Stream):
 
-    def on_status(self, status):
+    def on_status(self, status: Dict[str, Any]):
         print("[Info] Retrieved tweet: ", status.text)
         status_link = 'https://twitter.com/{}/status/{}'.format(status.user.screen_name, status.id)
         post_discord_webhook(status_link)
@@ -21,17 +23,6 @@ class ReplyStreamListener(StreamListener):
             post_discord_webhook(reply_link)
         return True
 
-    def on_error(self, status_code):
-        if status_code == 420:
-            print('[Error] 420')
-            return False
-        else:
-            print(f'[Error] {status_code}')
-            return False
-
-class ReplyStream():
-    def __init__(self, auth, listener):
-        self.stream = Stream(auth=auth, listener=listener)
-
-    def start(self):
-        self.stream.filter(track=["@nyanpassnanon"], threaded=True)
+    def on_error(self, status_code: int) -> bool:
+        logging.error(f'Error Occurred. Status Code: {status_code}')
+        return False
