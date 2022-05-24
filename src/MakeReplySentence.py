@@ -108,7 +108,7 @@ def MakeReplySentence(tweet: str) -> Optional[str]:
 
     # おみくじ
     if re.compile(r'(?:うらな(?:って|い)|占(?:って|い)|おみくじ|運勢?)').search(tweet):
-        if not GetTimelineTweets():
+        if len(GetTimelineTweets()) == 0:
             GatherTimelineTweets()
         return Omikuji()
 
@@ -117,13 +117,13 @@ def MakeReplySentence(tweet: str) -> Optional[str]:
         return Janken(tweet)
 
     # リプライのツイートがあれば
-    # if tweet:
+    if tweet:
 
-    #     # タイムラインから集めたツイートが空なら取得
-    #     if not GetTimelineTweets():
-    #         GatherTimelineTweets()
+        # タイムラインから集めたツイートが空なら取得
+        if len(GetTimelineTweets()) == 0:
+            GatherTimelineTweets()
 
-    #     # 定期ツイート同様の文章を生成して返す
-    #     return MakeSentence()
+        # 定期ツイート同様の文章を生成して返す
+        return MakeSentence()
 
     return None
