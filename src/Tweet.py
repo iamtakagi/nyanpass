@@ -1,4 +1,5 @@
 
+import datetime
 import logging
 
 from DiscordWebhook import SendDiscord
@@ -29,6 +30,27 @@ def Tweet():
     # Discord に通知
     SendDiscord(status_link_1)
     SendDiscord(status_link_2)
+
+
+def OnAirNotificationTweet(hashtag: str = '#tvtokyo'):
+    """ 放送告知ツイートを送信する """
+
+    # 2022年6月28日（火）以降は実行しない
+    # 第1クール終了後のため
+    if datetime.datetime.now() > datetime.datetime(year=2022, month=6, day=28, hour=0, minute=0, second=0):
+        return
+
+    # 画像をアップロード
+    with open('assets/onair.jpg', 'rb') as file:
+        media_id = (twitter_api.media_upload(file=file, filename='onair.jpg')).media_id
+
+    # ツイートを送信
+    tweet_result = twitter_api.update_status(status=hashtag, media_ids=[media_id])
+    status_link = f'https://twitter.com/{tweet_result.user.screen_name}/status/{tweet_result.id}'
+    logging.info(f'ONAir Notification Tweet: {status_link}')
+
+    # Discord に通知
+    SendDiscord(status_link)
 
 
 # 直接実行されたときにツイートする
