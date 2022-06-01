@@ -1,4 +1,5 @@
 
+import logging
 import MeCab
 import numpy as np
 
@@ -40,13 +41,21 @@ def ChoiceRandomNoun() -> str:
         # 形態素出力
         parsed: str = mecab.parse(tweet)
 
-        # 全ての文章から固有名詞だけを取り出す
-        for n in [line for line in parsed.splitlines() if '固有名詞' in line.split()[-1]]:
-            noun = n.split("\t")[0]
-            # 重複チェック
-            if not noun in nouns:
-                # 名詞を格納
-                nouns.append(noun)
+        try:
+
+            # 全ての文章から固有名詞だけを取り出す
+            for n in [line for line in parsed.splitlines() if '固有名詞' in line.split()[-1]]:
+                noun = n.split("\t")[0]
+                # 重複チェック
+                if not noun in nouns:
+                    # 名詞を格納
+                    nouns.append(noun)
+
+        # 何らかの要因で MeCab でうまく解析できていないので、エラーログを表示してスキップ
+        except IndexError:
+            logging.error('Error: MeCab parse failed.')
+            logging.error('Parsed string:')
+            logging.error(parsed.splitlines())
 
     # ランダムに名詞を取得
     # 同時に禁止対象のワードをフィルタリングする
