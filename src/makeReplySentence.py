@@ -42,7 +42,7 @@ def make_reply_sentence(status):
     # にゃんぱすー
     if "にゃんぱす" in text:
         return "にゃんぱすー"
-    # 占い
+    # おみくじ (占い)
     """
     おみくじ
     みくじ
