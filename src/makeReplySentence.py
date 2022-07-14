@@ -43,7 +43,24 @@ def make_reply_sentence(status):
     if "にゃんぱす" in text:
         return "にゃんぱすー"
     # 占い
-    if re.compile(r"(?:うらな(?:って|い)|占(?:って|い)|おみくじ|運勢?)").search(text):
+    """
+    おみくじ
+    みくじ
+    占って
+    うらなって
+    占い
+    うらない
+    うんせい
+    運
+    運勢
+    神籤
+    御籤
+    御鬮
+    お御籤
+    お神籤
+    御御籤
+    """
+    if re.compile(r"(?:う(?:らな(?:って|い)|んせい)|お(?:[御神]籤|みくじ)|御(?:御?籤|鬮)|占(?:って|い)|みくじ|運勢?|神籤)").search(text):
         if not get_tweets():
             fetch_timeline_tweets()
         return omikuji()
