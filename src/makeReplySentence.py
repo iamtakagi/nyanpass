@@ -54,13 +54,16 @@ def make_reply_sentence(status):
     運
     運勢
     神籤
+    神鬮
     御籤
     御鬮
     お御籤
     お神籤
     御御籤
+    御神鬮
+    御神籤
     """
-    if re.compile(r"(?:う(?:らな(?:って|い)|んせい)|お(?:[御神]籤|みくじ)|御(?:御?籤|鬮)|占(?:って|い)|みくじ|運勢?|神籤)").search(text):
+    if re.compile(r"(?:う(?:らな(?:って|い)|ん(?:せい)?)|御(?:神[籤鬮]|御?籤|鬮)|お(?:[御神]籤|みくじ)|占(?:って|い)|神[籤鬮]|みくじ|運勢?)").search(text):
         if not get_tweets():
             fetch_timeline_tweets()
         return omikuji()
