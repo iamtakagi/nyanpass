@@ -35,9 +35,9 @@ def Tweet():
 def OnAirNotificationTweet(hashtag: str = '#tvtokyo'):
     """ 放送告知ツイートを送信する """
 
-    # 2022年6月28日（火）以降は実行しない
-    # 第1クール終了後のため
-    if datetime.datetime.now() > datetime.datetime(year=2022, month=6, day=28, hour=0, minute=0, second=0):
+    # 2022年12月27日（火）以降は実行しない
+    # 第2クール終了後のため
+    if datetime.datetime.now() > datetime.datetime(year=2022, month=12, day=27, hour=0, minute=0, second=0):
         return
 
     # 画像をアップロード
