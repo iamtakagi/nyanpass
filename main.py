@@ -5,7 +5,7 @@ from tweet import tweet
 import logging
 from replyStream import ReplyStream
 from twitterAuth import auth
-#from flask_cors import CORS
+from flask_cors import CORS
 from flask import Flask, render_template, jsonify
 import os
 import numpy as np
@@ -20,11 +20,7 @@ def cron_tweet():
 
 
 app = Flask(__name__)
-#CORS(app)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
+CORS(app)
 
 @app.get("/api/make_sentence")
 def make_sentence():
