@@ -3,7 +3,7 @@ import os
 import json
 from twitterApi import api
 
-dest = 'data/timeline_tweets.json'
+dest = './data/timeline_tweets.json'
 
 def fetch_timeline_tweets():
     if os.path.isfile(dest):

@@ -4,6 +4,7 @@ mecab-python3
 numpy
 apscheduler
 requests
+gunicorn
 flask
 flask_cors
 tweepy==4.10.0

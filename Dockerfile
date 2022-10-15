@@ -17,5 +17,6 @@ RUN python -m pip install --upgrade pip \
     && pip install --no-cache-dir \
     -r requirements.txt
 
-ENTRYPOINT ["python3"]
-CMD ["src/main.py"]
+EXPOSE 8080
+
+CMD ["gunicorn", "--bind", ":8080", "--workers", "2", "main:app"]

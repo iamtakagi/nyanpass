@@ -163,3 +163,5 @@ dmypy.json
 Dockerfile.local
 
 docker-compose.yml
+
+fly.toml

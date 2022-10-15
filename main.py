@@ -22,7 +22,7 @@ def cron_tweet():
 app = Flask(__name__)
 CORS(app)
 
-@app.get("/api/make_sentence")
+@app.route("/api/make_sentence")
 def make_sentence():
     # 10%の確率で「にゃんぱすー」を返す
     if np.random.randint(1,91) == 1:
