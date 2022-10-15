@@ -5,8 +5,8 @@ from tweet import tweet
 import logging
 from replyStream import ReplyStream
 from twitterAuth import auth
-from flask_cors import CORS
-from flask import Flask, jsonify
+#from flask_cors import CORS
+from flask import Flask, render_template, jsonify
 import os
 import numpy as np
 
@@ -20,9 +20,13 @@ def cron_tweet():
 
 
 app = Flask(__name__)
-CORS(app)
+#CORS(app)
 
-@app.route("/api/make_sentence")
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.get("/api/make_sentence")
 def make_sentence():
     # 10%の確率で「にゃんぱすー」を返す
     if np.random.randint(1,91) == 1:
@@ -44,7 +48,6 @@ sched.start()
 if __name__ == "__main__":
     app.run (
         threaded=True,
-        host = os.environ["HOST"], 
-        port = os.environ["PORT"], 
+        host = os.environ["HOST"],
         debug=False
     )

@@ -10,7 +10,7 @@ def tweet():
     fetch_timeline_tweets()
     # 10%の確率で「にゃんぱすー」を呟く
     if np.random.randint(1,91) == 1:
-        media = api.media_upload("assets/renge.gif")
+        media = api.media_upload("renge.gif")
         nyanpass_status = api.update_status(status = "にゃんぱすー", media_ids=[media.media_id])
         nyanpass_link = f'https://twitter.com/{os.environ["SCREEN_NAME"]}/status/{nyanpass_status.id}'
         post_discord_webhook(nyanpass_link)
