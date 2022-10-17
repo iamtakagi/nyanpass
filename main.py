@@ -50,6 +50,7 @@ def initReplyStream():
 
 
 def reconnectReplyStream():
+    global replyStream
     if replyStream is not None:
         # 再接続
         replyStream.disconnect()
