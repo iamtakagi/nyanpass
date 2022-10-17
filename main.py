@@ -23,10 +23,11 @@ def cron_tweet():
 app = Flask(__name__)
 CORS(app)
 
+
 @app.get("/api/make_sentence")
 def make_sentence():
     # 10%の確率で「にゃんぱすー」を返す
-    if np.random.randint(1,91) == 1:
+    if np.random.randint(1, 91) == 1:
         return jsonify({'sentence': 'にゃんぱすー'})
     if not get_tweets():
         fetch_timeline_tweets()
@@ -36,6 +37,7 @@ def make_sentence():
 
 replyStream: ReplyStream or None
 
+
 def initReplyStream():
     global replyStream
     replyStream = ReplyStream(
@@ -43,21 +45,25 @@ def initReplyStream():
         os.environ['TWITTER_AT'], os.environ['TWITTER_ATS'],
     )
     if replyStream is not None:
-        replyStream.filter(track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
+        replyStream.filter(
+            track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
+
 
 # 1時間毎にストリームを初期化
 @scheduler.scheduled_job('cron', id='restart_stream', hour=1)
 def cron_restart_stream():
     initReplyStream()
 
+
+# スケジューラ起動
 scheduler.start()
 
 # ストリーム初期化
 initReplyStream()
 
 if __name__ == "__main__":
-    app.run (
+    app.run(
         threaded=True,
-        host = os.environ["HOST"],
+        host=os.environ["HOST"],
         debug=False
     )
