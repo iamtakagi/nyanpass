@@ -12,9 +12,10 @@ import numpy as np
 
 logging.basicConfig(level=logging.DEBUG)
 
-sched = BackgroundScheduler(daemon=True)
+scheduler = BackgroundScheduler(daemon=True)
 
-@sched.scheduled_job('cron', id='tweet', minute='*/10')
+# 10分毎にツイート
+@scheduler.scheduled_job('cron', id='tweet', minute=10)
 def cron_tweet():
     tweet()
 
@@ -31,15 +32,28 @@ def make_sentence():
         fetch_timeline_tweets()
     sentence_1, sentence_2 = make_sentences()
     return jsonify({'sentence': sentence_1})
-    
 
-stream = ReplyStream(
-    os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
-    os.environ['TWITTER_AT'], os.environ['TWITTER_ATS'],
-)
-stream.filter(track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
 
-sched.start()
+replyStream: ReplyStream or None
+
+def initReplyStream():
+    global replyStream
+    replyStream = ReplyStream(
+        os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
+        os.environ['TWITTER_AT'], os.environ['TWITTER_ATS'],
+    )
+    if replyStream is not None:
+        replyStream.filter(track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
+
+# 1時間毎にストリームを初期化
+@scheduler.scheduled_job('cron', id='restart_stream', hour=1)
+def cron_restart_stream():
+    initReplyStream()
+
+scheduler.start()
+
+# ストリーム初期化
+initReplyStream()
 
 if __name__ == "__main__":
     app.run (
