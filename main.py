@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.DEBUG)
 scheduler = BackgroundScheduler(daemon=True)
 
 # 10分毎にツイート
-@scheduler.scheduled_job('cron', id='tweet', minute=10)
+@scheduler.scheduled_job('cron', id='tweet', minute='*/10')
 def cron_tweet():
     tweet()
 
@@ -51,7 +51,7 @@ def initReplyStream():
 
 
 # 1時間毎に返信ストリーム初期化
-@scheduler.scheduled_job('cron', id='restart_stream', hour=1)
+@scheduler.scheduled_job('cron', id='restart_stream', hour='*/1')
 def cron_restart_stream():
     initReplyStream()
 
