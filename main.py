@@ -35,6 +35,7 @@ def make_sentence():
     return jsonify({'sentence': sentence_1})
 
 
+# 返信ストリーム
 replyStream: ReplyStream or None
 
 
@@ -49,17 +50,17 @@ def initReplyStream():
             track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
 
 
-# 1時間毎にストリームを初期化
+# 1時間毎に返信ストリーム初期化
 @scheduler.scheduled_job('cron', id='restart_stream', hour=1)
 def cron_restart_stream():
     initReplyStream()
 
 
+# 返信ストリーム初期化
+initReplyStream()
+
 # スケジューラ起動
 scheduler.start()
-
-# ストリーム初期化
-initReplyStream()
 
 if __name__ == "__main__":
     app.run(
