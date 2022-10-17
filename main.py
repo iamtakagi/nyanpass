@@ -58,7 +58,7 @@ def reconnectReplyStream():
        
 
 # 1時間毎に返信ストリーム再接続
-@scheduler.scheduled_job('cron', id='restart_stream', hour='*/1')
+@scheduler.scheduled_job('cron', id='restart_stream', minute='*/57')
 def cron_restart_stream():
     reconnectReplyStream()
 
