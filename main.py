@@ -54,6 +54,11 @@ def reconnectReplyStream():
     if replyStream is not None:
         # 再接続
         replyStream.disconnect()
+        replyStream = None
+        replyStream = ReplyStream(
+            os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
+            os.environ['TWITTER_AT'], os.environ['TWITTER_ATS'],
+        )
         replyStream.filter(
             track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
        
