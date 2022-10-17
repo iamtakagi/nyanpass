@@ -23,7 +23,6 @@ def cron_tweet():
 app = Flask(__name__)
 CORS(app)
 
-
 @app.get("/api/make_sentence")
 def make_sentence():
     # 10%の確率で「にゃんぱすー」を返す
@@ -36,14 +35,10 @@ def make_sentence():
 
 
 # 返信ストリーム
-replyStream: ReplyStream or None
-
+replyStream: ReplyStream or None = None
 
 def initReplyStream():
     global replyStream
-    # 切断
-    replyStream.disconnect()
-    replyStream = None
     # 接続
     replyStream = ReplyStream(
         os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
@@ -54,10 +49,18 @@ def initReplyStream():
             track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
 
 
-# 1時間毎に返信ストリーム初期化
+def reconnectReplyStream():
+    if replyStream is not None:
+        # 再接続
+        replyStream.disconnect()
+        replyStream.filter(
+            track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
+       
+
+# 1時間毎に返信ストリーム再接続
 @scheduler.scheduled_job('cron', id='restart_stream', hour='*/1')
 def cron_restart_stream():
-    initReplyStream()
+    reconnectReplyStream()
 
 
 # 返信ストリーム初期化
