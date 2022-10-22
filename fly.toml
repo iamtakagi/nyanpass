@@ -6,7 +6,6 @@ kill_timeout = 5
 processes = []
 
 [env]
-  DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1006201465083281450/uKDSzwznNPzGyzYknVHpbWq6rPnuUzZnZe8j_JuasEX_VovKWxyVqWFqYER6fYK_QEPl"
   HOST = "0.0.0.0"
   PORT = "8080"
   SCREEN_NAME = "nyanpassnanon"
