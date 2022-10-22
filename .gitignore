@@ -1,13 +1,3 @@
-chainfiles/
-vue/public/resources/
-python/twitter.env
-
-
-# vue ignore
-.DS_Store
-node_modules
-vue/dist
-
 # local env files
 .env.local
 .env.*.local
@@ -160,8 +150,4 @@ dmypy.json
 
 .vscode
 
-Dockerfile.local
-
 docker-compose.yml
-
-fly.toml
