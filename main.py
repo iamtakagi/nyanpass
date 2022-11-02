@@ -6,7 +6,7 @@ import logging
 from replyStream import ReplyStream
 from twitterAuth import auth
 from flask_cors import CORS
-from flask import Flask, render_template, jsonify
+from flask import Flask, jsonify
 import os
 import numpy as np
 
@@ -41,8 +41,7 @@ def initReplyStream():
     global replyStream
     # 接続
     replyStream = ReplyStream(
-        os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
-        os.environ['TWITTER_AT'], os.environ['TWITTER_ATS'],
+        auth = auth
     )
     if replyStream is not None:
         replyStream.filter(
@@ -56,8 +55,7 @@ def reconnectReplyStream():
         replyStream.disconnect()
         replyStream = None
         replyStream = ReplyStream(
-            os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
-            os.environ['TWITTER_AT'], os.environ['TWITTER_ATS'],
+            auth = auth
         )
         replyStream.filter(
             track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
