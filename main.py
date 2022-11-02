@@ -41,7 +41,8 @@ def initReplyStream():
     global replyStream
     # 接続
     replyStream = ReplyStream(
-        auth = auth
+        os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
+        os.environ['TWITTER_AT'], os.environ['TWITTER_ATS']
     )
     if replyStream is not None:
         replyStream.filter(
@@ -55,7 +56,8 @@ def reconnectReplyStream():
         replyStream.disconnect()
         replyStream = None
         replyStream = ReplyStream(
-            auth = auth
+            os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
+            os.environ['TWITTER_AT'], os.environ['TWITTER_ATS']
         )
         replyStream.filter(
             track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
