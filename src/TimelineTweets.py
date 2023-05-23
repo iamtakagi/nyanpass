@@ -1,7 +1,6 @@
 
 import json
 import os
-from typing import List
 
 from TweetFilters import FormatTweetText
 from TwitterAPI import twitter_api
@@ -43,12 +42,12 @@ def GatherTimelineTweets():
         file.write(json.dumps(tweets, ensure_ascii=False, indent=4))
 
 
-def GetTimelineTweets() -> List[str]:
+def GetTimelineTweets() -> list[str]:
     """
     保存したタイムラインのツイートを取得する
 
     Returns:
-        List[str]: ツイート文のリスト
+        list[str]: ツイート文のリスト
     """
 
     # ツイートが保存されていない場合

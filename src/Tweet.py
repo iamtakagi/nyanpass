@@ -1,6 +1,6 @@
 
 import datetime
-import logging
+from typing import Any, cast
 
 from DiscordWebhook import SendDiscord
 from MakeSentence import MakeSentence
@@ -24,8 +24,8 @@ def Tweet():
     status_link_1 = f'https://twitter.com/{tweet_result_1.user.screen_name}/status/{tweet_result_1.id}'
     status_link_2 = f'https://twitter.com/{tweet_result_1.user.screen_name}/status/{tweet_result_2.id}'
     line_break = '\n'  # f-string ではバックスラッシュが使えないので苦肉の策
-    logging.info(f'Tweet: {sentence_1.replace(line_break, " ")} ({status_link_1})')
-    logging.info(f'Tweet: {sentence_2.replace(line_break, " ")} ({status_link_2})')
+    print(f'Tweet: {sentence_1.replace(line_break, " ")} ({status_link_1})')
+    print(f'Tweet: {sentence_2.replace(line_break, " ")} ({status_link_2})')
 
     # Discord に通知
     SendDiscord(status_link_1)
@@ -42,12 +42,12 @@ def OnAirNotificationTweet(hashtag: str = '#tvtokyo'):
 
     # 画像をアップロード
     with open('assets/onair.jpg', 'rb') as file:
-        media_id = (twitter_api.media_upload(file=file, filename='onair.jpg')).media_id
+        media_id = cast(Any, twitter_api.media_upload(file=file, filename='onair.jpg')).media_id
 
     # ツイートを送信
     tweet_result = twitter_api.update_status(status=hashtag, media_ids=[media_id])
     status_link = f'https://twitter.com/{tweet_result.user.screen_name}/status/{tweet_result.id}'
-    logging.info(f'ONAir Notification Tweet: {status_link}')
+    print(f'ONAir Notification Tweet: {status_link}')
 
     # Discord に通知
     SendDiscord(status_link)

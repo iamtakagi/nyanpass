@@ -1,5 +1,4 @@
 
-import logging
 import MeCab
 import numpy as np
 
@@ -23,7 +22,7 @@ def ChoiceRandomNoun() -> str:
 
     # フィルターを掛ける
     for tweet in tweets:
-        tweet.replace('&lt;', '<') \
+        tweet = tweet.replace('&lt;', '<') \
              .replace('&gt;', '>') \
              .replace('&amp;', '&') \
              .replace('?', '？') \
@@ -53,9 +52,9 @@ def ChoiceRandomNoun() -> str:
 
         # 何らかの要因で MeCab でうまく解析できていないので、エラーログを表示してスキップ
         except IndexError:
-            logging.error('Error: MeCab parse failed.')
-            logging.error('Parsed string:')
-            logging.error(parsed.splitlines())
+            print('Error: MeCab parse failed.')
+            print('Parsed string:')
+            print(parsed.splitlines())
 
     # ランダムに名詞を取得
     # 同時に禁止対象のワードをフィルタリングする

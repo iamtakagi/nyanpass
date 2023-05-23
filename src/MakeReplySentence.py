@@ -3,7 +3,6 @@ import numpy as np
 import os
 import random
 import re
-from typing import Optional
 
 from ChoiceRandomNoun import ChoiceRandomNoun
 from MakeSentence import MakeSentence
@@ -81,7 +80,7 @@ def Janken(tweet: str) -> str:
     return janken
 
 
-def MakeReplySentence(tweet: str) -> Optional[str]:
+def MakeReplySentence(tweet: str) -> str | None:
     """
     リプライ用の文章を生成する
 
@@ -89,7 +88,7 @@ def MakeReplySentence(tweet: str) -> Optional[str]:
         tweet (str): リプライ元のツイート文
 
     Returns:
-        Optional[str]: リプライまたは None
+        str | None: リプライまたは None
     """
 
     # ツイートから記号を削除

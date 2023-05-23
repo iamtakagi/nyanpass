@@ -1,13 +1,8 @@
 
-import logging
-import os
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 from Tweet import OnAirNotificationTweet, Tweet
 
-
-# ログの設定
-logging.basicConfig(level=logging.INFO)
 
 # BlockingScheduler を初期化
 scheduler = BlockingScheduler(daemon=True)

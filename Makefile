@@ -15,7 +15,7 @@ logs:
 
 # 試しに単発でツイートする（デバッグ用）
 tweet:
-	@dockercompose run app src/Tweet.py
+	@docker compose run app src/Tweet.py
 
 # 試しにタイムラインからツイートを収集する（デバッグ用）
 gather-timeline:
