@@ -34,7 +34,7 @@ def MakeSentence() -> str:
         noun = ChoiceRandomNoun()
 
     # テンプレートとランダムな名詞を組み合わせて文章を生成
-    sentence = template['gokan'] + noun + template['gobi']
+    sentence = template.replace('%NOUN%', noun)
 
     # 文章を返す
     return sentence
