@@ -1,5 +1,5 @@
 
-FROM python:3.10.4-slim
+FROM python:3.11-slim
 
 ENV TZ=Asia/Tokyo
 
@@ -15,12 +15,12 @@ ENV MECAB_DICTIONARY_PATH=/usr/local/lib/mecab/dic/mecab-ipadic-neologd
 
 WORKDIR /app
 
-COPY ./requirements.txt /app/
-RUN python -m pip install --upgrade pip \
-    && pip install --no-cache-dir \
-    -r requirements.txt
+COPY ./Pipfile /app/
+COPY ./Pipfile.lock /app/
+ENV PIPENV_VENV_IN_PROJECT=true
+RUN pip install pipenv && pipenv sync
 
 COPY . /app/
 
-ENTRYPOINT ["python3"]
+ENTRYPOINT ["pipenv", "run", "python"]
 CMD ["src/main.py"]

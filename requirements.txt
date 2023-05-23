@@ -1,9 +1,0 @@
-
-apscheduler
-mecab-python3
-numpy
-pandas
-requests
-requests-oauthlib
-tweepy==4.9.0
-tzlocal==2.1
