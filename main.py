@@ -34,47 +34,6 @@ def make_sentence():
     return jsonify({'sentence': sentence_1})
 
 
-# 返信ストリーム
-replyStream: ReplyStream or None = None
-
-def initReplyStream():
-    global replyStream
-    # 接続
-    replyStream = ReplyStream(
-        os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
-        os.environ['TWITTER_AT'], os.environ['TWITTER_ATS']
-    )
-    if replyStream is not None:
-        replyStream.filter(
-            track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
-
-
-def reconnectReplyStream():
-    global replyStream
-    if replyStream is not None:
-        # 再接続
-        replyStream.disconnect()
-        replyStream = None
-        replyStream = ReplyStream(
-            os.environ['TWITTER_CK'], os.environ['TWITTER_CS'],
-            os.environ['TWITTER_AT'], os.environ['TWITTER_ATS']
-        )
-        replyStream.filter(
-            track=[f'@{os.environ["SCREEN_NAME"]}'], threaded=True)
-       
-
-# 1時間毎に返信ストリーム再接続
-@scheduler.scheduled_job('cron', id='restart_stream', minute='*/57')
-def cron_restart_stream():
-    reconnectReplyStream()
-
-
-# 返信ストリーム初期化
-initReplyStream()
-
-# スケジューラ起動
-scheduler.start()
-
 if __name__ == "__main__":
     app.run(
         threaded=True,
