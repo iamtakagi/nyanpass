@@ -34,6 +34,10 @@ def make_sentence():
     return jsonify({'sentence': sentence_1})
 
 
+# スケジューラ起動
+scheduler.start()
+
+
 if __name__ == "__main__":
     app.run(
         threaded=True,
