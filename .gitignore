@@ -133,3 +133,4 @@ dmypy.json
 .vscode
 data/*
 .DS_Store
+fly.toml
