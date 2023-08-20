@@ -1,45 +1,44 @@
+# nyanpass
 
-# anyabot (@anyawordbot)
+## 開発
 
-## かいはつ
-
-### 事前じゅんび
+### 事前準備
 
 ```bash
 $ cp .env.example .env
 $ nano .env  # かんきょうへんすうを 設定する
 ```
 
-### こんてなをビルド
+### コンテナイメージのビルド
 
 ```bash
 $ make build  # or docker-compose build
 ```
 
-### こんてなを起動
+### コンテナを起動
 
 ```bash
 $ make up  # or docker-compose up -d
 ```
 
-### こんてなのログ
+### コンテナのログを確認
 
 ```bash
 $ make logs  # or docker-compose logs
 ```
 
-### ためしに1回だけツイート
+### 試しに1回だけツイート
 
 ```bash
 $ make tweet  # or docker-compose run app src/Tweet.py
 ```
 
-### ためしにタイムラインからツイートを収集
+### 試しにタイムラインからツイートを収集
 
 ```bash
 $ make gather-timeline  # or docker-compose run app src/TimelineTweets.py
 ```
 
+## LICENSE
 
-## らいせんす
-[MIT License](License.txt)
+[MIT](License.txt)
