@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+    app:
+        image: nyanpass
+        container_name: nyanpass
+        restart: always
+        build:
+            context: .
+        env_file:
+            - .env
+        volumes:
+            - type: bind
+              source: './data/'
+              target: '/app/data/'
+            - type: bind
+              source: './assets/'
+              target: '/app/assets/'

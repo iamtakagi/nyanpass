@@ -1,21 +1,3 @@
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
 
 # Created by https://www.gitignore.io/api/python
 # Edit at https://www.gitignore.io/?templates=python
@@ -149,5 +131,5 @@ dmypy.json
 # End of https://www.gitignore.io/api/python
 
 .vscode
-
-docker-compose.yml
+data/*
+.DS_Store

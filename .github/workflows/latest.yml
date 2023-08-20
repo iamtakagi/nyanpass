@@ -15,9 +15,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: Checkout Repository
@@ -31,7 +28,7 @@ jobs:
         with:
           registry: ${{ env.DOCKER_REGISTRY_NAME }}
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.ACTION_TOKEN }}
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
